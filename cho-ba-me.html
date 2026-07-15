@@ -118,6 +118,29 @@ p{margin-bottom:14px}
 .cta-box{background:var(--choco);color:var(--cream);border-radius:var(--radius);padding:34px;text-align:center;margin:44px 0 0}
 .cta-box h2{color:var(--white);border:none;padding:0;margin:0 0 10px}
 .cta-box p{color:#D8C6AE;margin-bottom:20px}
+
+/* table of contents */
+.toc{background:var(--white);border-radius:var(--radius);padding:20px 26px;box-shadow:var(--shadow);margin-bottom:10px}
+.toc .lbl{font-family:var(--font-display);font-weight:800;font-size:.85rem;color:var(--gold-deep);display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.toc ol{padding-left:20px;columns:2;column-gap:20px}
+@media(max-width:560px){.toc ol{columns:1}}
+.toc li{margin-bottom:8px;font-size:.92rem;break-inside:avoid}
+.toc a{text-decoration:none;font-weight:600}
+.toc a:hover{color:var(--gold-deep)}
+
+/* li xi */
+.envelope-row{display:flex;gap:14px;margin:20px 0;flex-wrap:wrap}
+.envelope{flex:1;min-width:200px;background:var(--white);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow)}
+.envelope .ico{font-size:2.2rem;display:block;margin-bottom:8px}
+.envelope h3{font-size:1rem;margin-bottom:6px}
+.envelope p{font-size:.88rem;color:var(--choco-soft);margin:0}
+
+/* digital safety */
+.safety-list{margin:20px 0}
+.safety-item{display:flex;gap:16px;background:var(--white);border-radius:16px;padding:18px 22px;box-shadow:0 4px 14px rgba(59,42,26,.06);margin-bottom:12px;align-items:flex-start}
+.safety-item .ico{font-size:1.6rem;flex-shrink:0}
+.safety-item h3{font-size:1rem;margin-bottom:4px}
+.safety-item p{margin:0;color:var(--choco-soft);font-size:.92rem}
 footer{background:var(--choco);color:#D8C6AE;padding:30px 0;margin-top:56px;text-align:center;font-size:.88rem}
 footer a{color:var(--gold);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -142,11 +165,24 @@ footer a{color:var(--gold);text-decoration:none}
 <h1>Dạy con về tiền — bắt đầu thế nào cho đúng?</h1>
 <p class="lead">Chúng ta dạy con đánh răng, qua đường, nói cảm ơn... nhưng chuyện tiền bạc thì thường đợi "lớn rồi tính". Trang này giúp ba mẹ bắt đầu sớm hơn — nhẹ nhàng, đúng độ tuổi, và vui như xem hoạt hình.</p>
 
-<h2>Vì sao nên bắt đầu từ 6 tuổi?</h2>
+<div class="toc">
+  <span class="lbl">📑 Trong trang này</span>
+  <ol>
+    <li><a href="#vi-sao">Vì sao bắt đầu từ 6 tuổi?</a></li>
+    <li><a href="#lo-trinh">Lộ trình theo độ tuổi</a></li>
+    <li><a href="#3-hu-tien">Phương pháp 3 hũ tiền</a></li>
+    <li><a href="#li-xi">Tiền lì xì đầu năm</a></li>
+    <li><a href="#cach-dung">Cách dùng video hiệu quả</a></li>
+    <li><a href="#an-toan-so">An toàn tài chính số</a></li>
+    <li><a href="#nguyen-tac">5 nguyên tắc vàng</a></li>
+  </ol>
+</div>
+
+<h2 id="vi-sao">Vì sao nên bắt đầu từ 6 tuổi?</h2>
 <p>Thói quen tiền bạc của trẻ hình thành từ rất sớm — sớm hơn nhiều so với lúc con nhận tháng lương đầu tiên. Con quan sát cách ba mẹ tiêu tiền mỗi ngày và tự rút ra "luật" riêng của mình. Nếu không ai giải thích, con sẽ tự hiểu theo cách của con — và không phải lúc nào cũng đúng.</p>
 <p>Dạy con về tiền không phải là dạy con "ham tiền". Ngược lại: con hiểu tiền từ đâu ra sẽ biết quý sức lao động của ba mẹ; con biết chờ đợi để đạt mục tiêu sẽ kiên nhẫn hơn; con hiểu quảng cáo sẽ khó bị dụ hơn. Đó là những kỹ năng sống, và tiền chỉ là công cụ để dạy chúng.</p>
 
-<h2>Lộ trình theo độ tuổi</h2>
+<h2 id="lo-trinh">Lộ trình theo độ tuổi</h2>
 
 <div class="card">
   <span class="age">6–8 tuổi</span>
@@ -194,7 +230,27 @@ footer a{color:var(--gold);text-decoration:none}
 </div>
 <p>Tỷ lệ chỉ là gợi ý — quan trọng là con <b>tự tay chia</b> và ba mẹ không "mượn tạm" hũ của con. Chi tiết trong Tập 10.</p>
 
-<h2>Cách dùng video Heo Vàng hiệu quả nhất</h2>
+<h2 id="li-xi">Tiền lì xì đầu năm — biến quà Tết thành bài học</h2>
+<p>Mỗi dịp Tết, một đứa trẻ có thể nhận được một khoản tiền lớn hơn nhiều lần tiền tiêu vặt cả năm cộng lại. Đây là cơ hội quý để thực hành mọi bài học tiền bạc cùng lúc — nếu ba mẹ không giữ hộ toàn bộ, cũng không để con tiêu sạch trong ba ngày Tết.</p>
+<div class="envelope-row">
+  <div class="envelope">
+    <span class="ico">🧧</span>
+    <h3>Thỏa thuận trước Tết</h3>
+    <p>Nói rõ với con trước khi nhận lì xì: bao nhiêu phần trăm con được tự tiêu, bao nhiêu vào 3 hũ. Tránh bất ngờ "tịch thu" sau khi con đã đếm tiền vui vẻ.</p>
+  </div>
+  <div class="envelope">
+    <span class="ico">✍️</span>
+    <h3>Cho con tự ghi chép</h3>
+    <p>Một cuốn sổ nhỏ ghi ai lì xì bao nhiêu, con quyết định chia thế nào — cảm giác "tự quản" khoản tiền lớn đầu đời rất quan trọng với trẻ.</p>
+  </div>
+  <div class="envelope">
+    <span class="ico">🎯</span>
+    <h3>Gắn với một mục tiêu</h3>
+    <p>Đây là dịp lý tưởng để bắt đầu một mục tiêu lớn — như chiếc xe đạp của Suri trong Tập 8. Số tiền lì xì thường đủ để mục tiêu bớt xa vời.</p>
+  </div>
+</div>
+
+<h2 id="cach-dung">Cách dùng video Heo Vàng hiệu quả nhất</h2>
 <div class="steps">
   <div class="step">
     <h3>Xem cùng con</h3>
@@ -214,7 +270,25 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </div>
 
-<h2>5 nguyên tắc vàng khi nói chuyện tiền với con</h2>
+<h2 id="an-toan-so">An toàn tài chính số cho con</h2>
+<p>Trẻ em ngày nay chạm vào tiền "ảo" (game, ví điện tử, mua sắm online) sớm hơn nhiều so với tiền mặt. An toàn tài chính số cần được dạy song song với các bài học truyền thống — không phải để dọa con sợ, mà để con có phản xạ đúng.</p>
+<div class="safety-list">
+  <div class="safety-item">
+    <span class="ico">🔒</span>
+    <div><h3>Không chia sẻ mật khẩu, kể cả với "nhân viên ngân hàng"</h3><p>Dạy con quy tắc đơn giản: không ai có thật cần con đọc mật khẩu hay mã OTP qua tin nhắn hay điện thoại.</p></div>
+  </div>
+  <div class="safety-item">
+    <span class="ico">🎮</span>
+    <div><h3>Khóa thanh toán trong game và ứng dụng</h3><p>Bật xác nhận mật khẩu cho mọi giao dịch trong ứng dụng trên thiết bị của con, để tránh những lần "lỡ tay" nạp tiền thật.</p></div>
+  </div>
+  <div class="safety-item">
+    <span class="ico">🎁</span>
+    <div><h3>Cảnh giác với "trúng thưởng" và quà miễn phí</h3><p>Bất cứ thứ gì yêu cầu con nhập thông tin cá nhân hoặc thông tin thẻ để "nhận quà" đều đáng ngờ — nguyên tắc vàng: hỏi ba mẹ trước khi bấm.</p></div>
+  </div>
+</div>
+<p style="text-align:center"><a href="hoi-heo.html" style="color:var(--gold-deep);font-weight:700;text-decoration:none">🐷💬 Xem thêm tình huống thật trong trang Hỏi chú Heo →</a></p>
+
+<h2 id="nguyen-tac">5 nguyên tắc vàng khi nói chuyện tiền với con</h2>
 <div class="rules">
   <ol>
     <li><b>Không biến tiền thành chuyện cấm kỵ.</b> Con hỏi "nhà mình giàu không?" — đừng gạt đi. Trả lời thật, ở mức con hiểu được.</li>

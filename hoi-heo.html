@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,89 +41,48 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="clay.css">
 <style>
-:root{--gold:#F2A900;--gold-deep:#C97F00;--gold-soft:#FFE7A8;--cream:#FFF8E7;--choco:#3B2A1A;--choco-soft:#6B5540;--coral:#FF6B5E;--coral-deep:#E04E41;--leaf:#2E9E6B;--white:#FFF;--radius:22px;--shadow:0 10px 30px rgba(59,42,26,.10);--fd:'Baloo 2',system-ui,sans-serif;--fb:'Be Vietnam Pro',system-ui,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--fb);color:var(--choco);background:var(--cream);line-height:1.7;font-size:16.5px}
-a{color:inherit}
-.container{max-width:800px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--fd);line-height:1.25}
-header{position:sticky;top:0;z-index:50;background:rgba(255,248,231,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--gold-soft)}
-.nav{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--fd);font-weight:800;font-size:1.35rem;text-decoration:none}
-.btn{display:inline-block;font-family:var(--fd);font-weight:700;text-decoration:none;border-radius:999px;padding:10px 22px;background:var(--coral);color:var(--white);box-shadow:0 5px 0 var(--coral-deep);transition:transform .15s;border:none;cursor:pointer;font-size:1rem}
-.btn:hover{transform:translateY(-2px)}
-.btn:focus-visible{outline:3px solid var(--choco);outline-offset:3px}
-.crumb{font-size:.85rem;color:var(--choco-soft);padding:22px 0 0}
-.crumb a{text-decoration:none}.crumb a:hover{color:var(--gold-deep)}
-.eyebrow{display:inline-block;font-family:var(--fd);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-soft);padding:5px 14px;border-radius:999px;margin:14px 0 10px}
-h1{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:800;margin-bottom:10px}
-p.lead{font-size:1.06rem;color:var(--choco-soft);margin-bottom:22px}
-
-.searchbar{display:flex;gap:10px;margin:6px 0 16px;flex-wrap:wrap}
-.searchbar input{flex:1;min-width:180px;padding:12px 18px;border-radius:999px;border:2.5px solid var(--gold-soft);font-family:var(--fb);font-size:1rem;background:var(--white)}
-.searchbar input:focus{outline:none;border-color:var(--gold)}
-
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.tabbtn{font-family:var(--fd);font-weight:700;font-size:.9rem;border:2px solid var(--gold-soft);background:var(--white);color:var(--choco);border-radius:999px;padding:10px 18px;cursor:pointer}
-.tabbtn.active{background:var(--gold);border-color:var(--gold);color:var(--choco)}
-
-h2.groupname{font-size:1.15rem;font-weight:800;margin:34px 0 14px;padding-left:14px;border-left:5px solid var(--gold);display:flex;align-items:center;gap:8px}
-
-details.qa{background:var(--white);border-radius:16px;margin-bottom:12px;box-shadow:0 4px 14px rgba(59,42,26,.06)}
-details.qa summary{cursor:pointer;font-family:var(--fd);font-weight:700;padding:16px 20px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:1rem}
-details.qa summary::-webkit-details-marker{display:none}
-details.qa summary .arrow{font-size:1.3rem;color:var(--gold-deep);flex-shrink:0}
-details.qa[open] summary .arrow{transform:rotate(45deg)}
-details.qa .ans{padding:0 20px 18px;color:var(--choco-soft)}
-details.qa .ans p{margin-bottom:10px}
-details.qa .ans p:last-child{margin-bottom:0}
-details.qa .related{display:inline-block;background:var(--gold-soft);color:var(--choco);text-decoration:none;font-family:var(--fd);font-weight:700;font-size:.82rem;padding:6px 14px;border-radius:999px;margin-top:4px}
-details.qa .related:hover{background:var(--gold)}
-
-.empty{text-align:center;color:var(--choco-soft);padding:30px;display:none}
-
-.ask-box{background:var(--choco);color:var(--cream);border-radius:var(--radius);padding:30px 32px;text-align:center;margin-top:44px}
-.ask-box h2{color:var(--white);border:none;padding:0;margin:0 0 8px;font-size:1.3rem}
-.ask-box p{color:#D8C6AE;margin-bottom:18px;font-size:.95rem}
-.ask-box a{color:var(--gold);font-weight:700;text-decoration:none}
-
-footer{background:var(--choco);color:#D8C6AE;padding:28px 0;margin-top:52px;text-align:center;font-size:.88rem}
-footer a{color:var(--gold);text-decoration:none}
+h2.groupname{font-size:1.1rem;font-weight:800;margin:32px 0 12px;padding-left:14px;border-left:5px solid var(--gold);color:var(--ink)}
+.qa .acc-head{font-weight:700;font-size:.95rem}
+.empty{text-align:center;color:rgba(46,58,42,.55);padding:30px;display:none}
+.ask-cta{background:var(--footer-bg);color:var(--footer-text);border-radius:var(--radius-lg);padding:30px 32px;text-align:center;margin-top:44px}
+.ask-cta h2{color:#fff;font-size:1.3rem;margin:0 0 8px}
+.ask-cta p{color:rgba(234,246,240,.75);margin-bottom:18px;font-size:.92rem}
+.ask-cta a{color:var(--gold);font-weight:700;text-decoration:none}
 </style>
 </head>
 <body>
 <header>
   <div class="nav">
-    <a class="logo" href="index.html">🐷 Heo Vàng</a>
-    <a class="btn" href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">Đăng ký kênh</a>
+    <a class="logo" href="index.html"><span class="badge">🐷</span><span class="name">Heo Vàng</span></a>
+    <a class="btn-premium" href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">Đăng ký kênh</a>
   </div>
 </header>
 
-<main class="container">
+<main class="container-narrow" style="padding-top:8px;padding-bottom:20px">
 <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a> › Hỏi chú Heo</nav>
-<span class="eyebrow">🐷💬 Hỏi chú Heo</span>
-<h1>Tình huống tiền bạc thường gặp với con</h1>
+<span class="eyebrow gold" style="margin-top:14px">🐷💬 Hỏi chú Heo</span>
+<h1 class="h1-page">Tình huống tiền bạc thường gặp với con</h1>
 <p class="lead">Những câu hỏi và tình huống thật mà ba mẹ hay gặp — và những câu con hay thắc mắc. Chú Heo gợi ý cách trả lời, kèm bài học liên quan để cả nhà xem thêm cùng nhau. Gõ để tìm nhanh, hoặc lọc theo đối tượng.</p>
 
 <div class="searchbar"><input type="text" id="q" placeholder="Gõ để tìm, ví dụ: heo đất, lừa đảo, tiêu vặt..." /></div>
-<div class="tabs" id="tabs"></div>
+<div class="tabs-row" id="tabs"></div>
 
 <div id="list"></div>
 <p class="empty" id="empty">Không tìm thấy tình huống nào — thử từ khóa khác nhé!</p>
 
-<div class="ask-box">
+<div class="ask-cta">
   <h2>Con có câu hỏi mà chưa thấy ở đây?</h2>
   <p>Chú Heo chưa có chatbot trả lời tự động — nhưng ba mẹ cứ nhắn cho đội ngũ Heo Vàng, biết đâu câu hỏi của nhà mình sẽ thành tình huống tiếp theo!</p>
-  <a href="mailto:thanhmercedeshaxaco@gmail.com">✉️ Gửi câu hỏi qua email</a>
+  <a href="gop-y.html">✉️ Gửi câu hỏi qua trang Góp ý</a>
 </div>
 
 </main>
-<footer>Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · © 2026 Heo Vàng · <a href="index.html">taichinhchocon.vn</a></footer>
+<footer class="footer-simple">Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · © 2026 Heo Vàng · <a href="index.html">taichinhchocon.vn</a></footer>
 
 <script>
 var DATA = [
-  // ===== BA MẸ HỎI =====
   {aud:"bame", cat:"💰 Tiền tiêu vặt & Heo đất", q:"Mấy tuổi thì nên bắt đầu cho con tiền tiêu vặt?", a:["Khoảng 6–7 tuổi, ngay khi con biết đếm tiền và hiểu tiền dùng để mua đồ. Bắt đầu với số tiền nhỏ, cố định theo tuần thay vì cho tùy hứng, để con tập quyết định đều đặn."], rel:["tap-09.html","Tập 9: Tiền tiêu vặt của Suri"]},
   {aud:"bame", cat:"💰 Tiền tiêu vặt & Heo đất", q:"Cho con bao nhiêu tiền tiêu vặt mỗi tuần là hợp lý?", a:["Không có con số chuẩn — quan trọng là vừa đủ để con có quyền quyết định thật (mua sai cũng được), nhưng không quá nhiều đến mức con không cần cân nhắc gì cả. Nhiều gia đình dùng mốc: đủ mua 1–2 món nhỏ mỗi tuần."], rel:["cho-ba-me.html#3-hu-tien","Xem phương pháp 3 hũ tiền"]},
   {aud:"bame", cat:"💰 Tiền tiêu vặt & Heo đất", q:"Con tiêu hết veo tiền tiêu vặt trong một ngày, có nên can thiệp không?", a:["Đừng vội bù tiền hay mắng con. Để con trải nghiệm cảm giác \"hết tiền, chờ đến tuần sau\" — đây là bài học nhớ lâu hơn bất kỳ lời nhắc nào. Sau đó nhẹ nhàng hỏi con: lần sau con sẽ làm khác thế nào?"], rel:["tap-11.html","Tập 11: Kiên nhẫn = phần thưởng lớn hơn"]},
@@ -142,7 +101,6 @@ var DATA = [
   {aud:"bame", cat:"💬 Câu hỏi nhạy cảm", q:"Gia đình đang khó khăn tài chính, có nên nói cho con biết không?", a:["Nên, ở mức phù hợp tuổi — không cần chi tiết số nợ, nhưng con có quyền hiểu vì sao dạo này ba mẹ hạn chế chi tiêu. Trẻ con thường cảm nhận được sự căng thẳng trong nhà dù không ai nói ra; im lặng khiến con tự tưởng tượng ra điều tệ hơn thực tế."]},
   {aud:"bame", cat:"💬 Câu hỏi nhạy cảm", q:"Con so sánh ba mẹ với ba mẹ bạn khác \"giàu hơn\", phải phản ứng sao?", a:["Không cần tự ái hay phòng thủ. Hỏi con: điều gì khiến con nghĩ vậy? Rồi giải thích nhẹ nhàng: mỗi gia đình có lựa chọn chi tiêu khác nhau, và những gì nhìn thấy bên ngoài không nói hết câu chuyện tài chính của một nhà."]},
 
-  // ===== CON HỎI =====
   {aud:"con", cat:"🐷 Vì sao phải để dành?", q:"Tại sao con phải để dành tiền, tiêu hết luôn không được à?", a:["Tiêu hết luôn thì lúc có món đồ con thật sự muốn — như chiếc xe đạp của Suri — con sẽ không đủ tiền mua. Để dành một phần mỗi lần có tiền giúp con dần dần đạt được những ước mơ lớn hơn, không chỉ những thứ nhỏ trước mắt."], rel:["tap-07.html","Tập 7: Chú heo đất đầu tiên"]},
   {aud:"con", cat:"🐷 Vì sao phải để dành?", q:"Nếu con để dành lâu quá mà không mua gì thì tiền có phí không?", a:["Không hề phí! Tiền để trong heo đất hoặc gửi ngân hàng vẫn là của con, và nếu gửi ngân hàng, số tiền đó còn tự sinh thêm một chút mỗi năm nhờ lãi suất. Để dành không phải là mất, mà là chờ đúng lúc để dùng cho việc con thật sự muốn."], rel:["tap-13.html","Tập 13: Gửi ngân hàng — tiền đẻ ra tiền"]},
   {aud:"con", cat:"🐷 Vì sao phải để dành?", q:"Nếu con làm mất tiền để dành thì có lấy lại được không?", a:["Tiền mặt bị mất thì khó lấy lại, đó là lý do nên cất tiền ở nơi an toàn như heo đất có khóa hoặc nhờ ba mẹ giữ giúp phần lớn. Nếu tiền gửi trong tài khoản ngân hàng thì luôn an toàn, không sợ rơi hay thất lạc."]},
@@ -167,7 +125,7 @@ var tabs=document.getElementById('tabs'),list=document.getElementById('list'),em
 var activeTab='all';
 var TAB_DEFS=[["all","Tất cả"],["bame","👨‍👩‍👧 Ba mẹ hỏi"],["con","🧒 Con hỏi"]];
 TAB_DEFS.forEach(function(t){
-  var b=document.createElement('button');b.className='tabbtn'+(t[0]==='all'?' active':'');b.textContent=t[1];
+  var b=document.createElement('button');b.className='tab-pill'+(t[0]==='all'?' active':'');b.textContent=t[1];
   b.onclick=function(){activeTab=t[0];Array.from(tabs.children).forEach(function(x){x.classList.remove('active')});b.classList.add('active');render();};
   tabs.appendChild(b);
 });
@@ -189,13 +147,14 @@ function render(){
       var h=document.createElement('h2');h.className='groupname';h.textContent=cat;list.appendChild(h);
       items.forEach(function(d){
         n++;
-        var det=document.createElement('details');det.className='qa';
-        var sum=document.createElement('summary');
-        sum.innerHTML='<span>'+d.q+'</span><span class="arrow">＋</span>';
+        var det=document.createElement('div');det.className='acc-item qa';
+        var sum=document.createElement('button');sum.type='button';sum.className='acc-head';
+        sum.innerHTML='<span>'+d.q+'</span><span class="acc-chev">▾</span>';
+        sum.addEventListener('click', function(){ det.classList.toggle('open'); });
         det.appendChild(sum);
-        var ans=document.createElement('div');ans.className='ans';
-        d.a.forEach(function(p){var pp=document.createElement('p');pp.textContent=p;ans.appendChild(pp);});
-        if(d.rel){var a=document.createElement('a');a.className='related';a.href=d.rel[0];a.textContent='📖 '+d.rel[1];ans.appendChild(a);}
+        var ans=document.createElement('div');ans.className='acc-body';
+        d.a.forEach(function(p){var pp=document.createElement('p');pp.textContent=p;pp.style.marginBottom='10px';ans.appendChild(pp);});
+        if(d.rel){var a=document.createElement('a');a.className='btn btn-gold-sm';a.style.marginTop='4px';a.href=d.rel[0];a.textContent='📖 '+d.rel[1];ans.appendChild(a);}
         det.appendChild(ans);
         list.appendChild(det);
       });

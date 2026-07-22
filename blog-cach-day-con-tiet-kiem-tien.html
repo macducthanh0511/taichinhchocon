@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Schema: BlogPosting + FAQ + Breadcrumb -->
 <script type="application/ld+json">
@@ -73,79 +73,56 @@
 }
 </script>
 
+<link rel="stylesheet" href="clay.css">
 <style>
-:root{
-  --gold:#F2A900;--gold-deep:#C97F00;--gold-soft:#FFE7A8;--cream:#FFF8E7;
-  --choco:#3B2A1A;--choco-soft:#6B5540;--coral:#FF6B5E;--coral-deep:#E04E41;
-  --leaf:#2E9E6B;--white:#FFF;--radius:22px;--shadow:0 10px 30px rgba(59,42,26,.10);
-  --font-display:'Baloo 2',system-ui,sans-serif;--font-body:'Be Vietnam Pro',system-ui,sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--font-body);color:var(--choco);background:var(--cream);line-height:1.75;font-size:17px}
-a{color:inherit}
-.container{max-width:720px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--font-display);line-height:1.25}
-header{position:sticky;top:0;z-index:50;background:rgba(255,248,231,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--gold-soft)}
-.nav{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--font-display);font-weight:800;font-size:1.35rem;text-decoration:none}
-.btn{display:inline-block;font-family:var(--font-display);font-weight:700;text-decoration:none;border-radius:999px;padding:10px 22px;background:var(--coral);color:var(--white);box-shadow:0 5px 0 var(--coral-deep);transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn:focus-visible{outline:3px solid var(--choco);outline-offset:3px}
-.crumb{font-size:.85rem;color:var(--choco-soft);padding:22px 0 0}
-.crumb a{text-decoration:none}
-.crumb a:hover{color:var(--gold-deep)}
-.eyebrow{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-soft);padding:5px 14px;border-radius:999px;margin:14px 0 10px}
-h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;margin-bottom:10px}
-.meta{font-size:.88rem;color:var(--choco-soft);margin-bottom:26px}
+body{font-size:17px}
+.meta{font-size:.88rem;color:rgba(46,58,42,.6);margin-bottom:26px}
 h2{font-size:1.4rem;font-weight:800;margin:38px 0 14px;padding-left:14px;border-left:5px solid var(--gold)}
 h3{font-size:1.1rem;margin:24px 0 8px}
 p{margin-bottom:15px}
-article a{color:var(--gold-deep);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold-soft);text-underline-offset:3px}
-article a:hover{text-decoration-color:var(--gold-deep)}
+article a{color:var(--green-deep);font-weight:700;text-decoration:underline;text-decoration-color:rgba(63,160,108,.35);text-underline-offset:3px}
+article a:hover{text-decoration-color:var(--green-deep)}
 
-.toc{background:var(--white);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow);margin:24px 0 10px}
-.toc b{font-family:var(--font-display);display:block;margin-bottom:8px}
+.toc{background:var(--cream);border-radius:var(--radius-lg);padding:22px 26px;box-shadow:var(--sh-md);margin:24px 0 10px}
+.toc b{font-family:var(--fd);display:block;margin-bottom:8px}
 .toc ol{padding-left:20px}
 .toc li{margin-bottom:5px;font-size:.93rem}
-.toc a{color:var(--choco);text-decoration:none;font-weight:500}
-.toc a:hover{color:var(--gold-deep)}
+.toc a{color:var(--ink);text-decoration:none;font-weight:600}
+.toc a:hover{color:var(--green-deep)}
 
-.tip{background:var(--gold-soft);border-radius:16px;padding:18px 22px;margin:18px 0;font-weight:500}
-.tip::before{content:"💡 Mẹo nhỏ: ";font-family:var(--font-display);font-weight:800;color:var(--gold-deep)}
-.warn{background:#FFE3E0;border-radius:16px;padding:18px 22px;margin:18px 0;font-weight:500}
-.warn::before{content:"⚠️ Tránh: ";font-family:var(--font-display);font-weight:800;color:var(--coral-deep)}
+.tip{background:var(--mint);border-radius:16px;padding:18px 22px;margin:18px 0;font-weight:600;box-shadow:var(--sh-inset-icon)}
+.tip::before{content:"💡 Mẹo nhỏ: ";font-family:var(--fd);font-weight:800;color:var(--green-deep)}
+.warn{background:#FFE3E0;border-radius:16px;padding:18px 22px;margin:18px 0;font-weight:600}
+.warn::before{content:"⚠️ Tránh: ";font-family:var(--fd);font-weight:800;color:var(--coral-deep)}
 
-.video-cta{display:flex;align-items:center;gap:16px;background:var(--white);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow);margin:18px 0;text-decoration:none!important}
-.video-cta .play{width:46px;height:46px;background:var(--coral);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.video-cta .txt small{display:block;font-size:.78rem;color:var(--choco-soft);font-weight:500}
-.video-cta .txt b{font-family:var(--font-display);font-size:1rem;color:var(--choco)}
+.video-cta{display:flex;align-items:center;gap:16px;background:var(--cream);border-radius:16px;padding:16px 20px;box-shadow:var(--sh-md);margin:18px 0;text-decoration:none!important}
+.video-cta .play{width:46px;height:46px;background:var(--coral);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.video-cta .txt small{display:block;font-size:.78rem;color:rgba(46,58,42,.6);font-weight:600}
+.video-cta .txt b{font-family:var(--fd);font-size:1rem;color:var(--ink)}
 .video-cta:hover .play{background:var(--coral-deep)}
 
-.cta-box{background:var(--choco);color:var(--cream);border-radius:var(--radius);padding:34px;text-align:center;margin:44px 0 0}
-.cta-box h2{color:var(--white);border:none;padding:0;margin:0 0 10px}
-.cta-box p{color:#D8C6AE;margin-bottom:20px}
-footer{background:var(--choco);color:#D8C6AE;padding:30px 0;margin-top:56px;text-align:center;font-size:.88rem}
-footer a{color:var(--gold);text-decoration:none}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.cta-box{background:var(--footer-bg);color:var(--footer-text);border-radius:var(--radius-lg);padding:34px;text-align:center;margin:44px 0 0}
+.cta-box h2{color:#fff;border:none;padding:0;margin:0 0 10px}
+.cta-box p{color:rgba(234,246,240,.75);margin-bottom:20px}
 </style>
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <a class="logo" href="index.html">🐷 Heo Vàng</a>
-    <a class="btn" href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">Đăng ký kênh</a>
+    <a class="logo" href="index.html"><span class="badge">🐷</span><span class="name">Heo Vàng</span></a>
+    <a class="btn-premium" href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">Đăng ký kênh</a>
   </div>
 </header>
 
-<main class="container">
+<main class="container-article" style="padding-top:8px;padding-bottom:20px">
 
 <nav class="crumb" aria-label="Breadcrumb">
   <a href="index.html">Trang chủ</a> › <a href="blog.html">Blog</a> › Cách dạy con tiết kiệm tiền
 </nav>
 
-<span class="eyebrow">Blog · Dạy con về tiền</span>
-<h1>Cách dạy con tiết kiệm tiền: 7 bước thực tế cho ba mẹ Việt</h1>
+<span class="eyebrow gold" style="margin-top:14px">Blog · Dạy con về tiền</span>
+<h1 class="h1-page">Cách dạy con tiết kiệm tiền: 7 bước thực tế cho ba mẹ Việt</h1>
 <p class="meta">Cập nhật 14/07/2026 · Áp dụng cho trẻ 6–12 tuổi · Đọc trong 6 phút</p>
 
 <article>
@@ -217,12 +194,12 @@ footer a{color:var(--gold);text-decoration:none}
 <div class="cta-box">
   <h2>24 tập — mỗi tuần một bài học về tiền 🐷</h2>
   <p>Suri cũng đang tiết kiệm cho chiếc xe đạp đầu tiên. Cho con đồng hành cùng bạn ấy nhé — miễn phí, không quảng cáo.</p>
-  <a class="btn" href="index.html#bai-hoc">Xem 24 bài học</a>
+  <a class="btn btn-gold" href="index.html#bai-hoc">Xem 24 bài học</a>
 </div>
 
 </main>
 
-<footer>
+<footer class="footer-simple">
   Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · © 2026 Heo Vàng · <a href="index.html">taichinhchocon.vn</a>
 </footer>
 

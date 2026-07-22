@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
   {"@type":"BreadcrumbList","itemListElement":[
@@ -26,57 +26,28 @@
   ]}
 ]}
 </script>
+<link rel="stylesheet" href="clay.css">
 <style>
-:root{--gold:#F2A900;--gold-deep:#C97F00;--gold-soft:#FFE7A8;--cream:#FFF8E7;--choco:#3B2A1A;--choco-soft:#6B5540;--coral:#FF6B5E;--coral-deep:#E04E41;--leaf:#2E9E6B;--white:#FFF;--radius:22px;--shadow:0 10px 30px rgba(59,42,26,.10);--fd:'Baloo 2',system-ui,sans-serif;--fb:'Be Vietnam Pro',system-ui,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--fb);color:var(--choco);background:var(--cream);line-height:1.7;font-size:16.5px}
-a{color:inherit}
-.container{max-width:620px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--fd);line-height:1.25}
-header{position:sticky;top:0;z-index:50;background:rgba(255,248,231,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--gold-soft)}
-.nav{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--fd);font-weight:800;font-size:1.35rem;text-decoration:none}
-.btn{display:inline-block;font-family:var(--fd);font-weight:700;text-decoration:none;border-radius:999px;padding:12px 26px;background:var(--coral);color:var(--white);box-shadow:0 6px 0 var(--coral-deep);transition:transform .15s;border:none;cursor:pointer;font-size:1rem;width:100%}
-.btn:hover{transform:translateY(-2px)}
-.btn:focus-visible{outline:3px solid var(--choco);outline-offset:3px}
-.crumb{font-size:.85rem;color:var(--choco-soft);padding:22px 0 0}
-.crumb a{text-decoration:none}.crumb a:hover{color:var(--gold-deep)}
-.eyebrow{display:inline-block;font-family:var(--fd);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-soft);padding:5px 14px;border-radius:999px;margin:14px 0 10px}
-h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;margin-bottom:10px}
-p.lead{font-size:1.05rem;color:var(--choco-soft);margin-bottom:28px}
-
-.formcard{background:var(--white);border-radius:var(--radius);padding:30px 32px;box-shadow:var(--shadow)}
-.field{margin-bottom:18px}
-.field label{display:block;font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:6px}
-.field .opt{font-weight:400;color:var(--choco-soft);font-size:.82rem}
-.field input[type="text"],.field input[type="email"],.field select,.field textarea{width:100%;padding:12px 16px;border-radius:14px;border:2.5px solid var(--gold-soft);font-family:var(--fb);font-size:1rem;background:var(--cream);color:var(--choco)}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:var(--white)}
-.field textarea{resize:vertical;min-height:120px}
-.hp{position:absolute;left:-9999px;top:-9999px}
-.note{font-size:.82rem;color:var(--choco-soft);margin-top:14px;text-align:center}
-
-.alt{background:var(--gold-soft);border-radius:var(--radius);padding:22px 26px;margin-top:20px;text-align:center;font-size:.92rem}
-.alt a{color:var(--gold-deep);font-weight:700;text-decoration:none}
-
-footer{background:var(--choco);color:#D8C6AE;padding:28px 0;margin-top:52px;text-align:center;font-size:.88rem}
-footer a{color:var(--gold);text-decoration:none}
+.note{font-size:.82rem;color:rgba(46,58,42,.6);margin-top:14px;text-align:center}
+.alt{background:var(--mint);border-radius:var(--radius-lg);padding:22px 26px;margin-top:20px;text-align:center;font-size:.92rem;box-shadow:var(--sh-inset-icon)}
+.alt a{color:var(--green-deep);font-weight:700;text-decoration:none}
 </style>
 </head>
 <body>
 <header>
   <div class="nav">
-    <a class="logo" href="index.html">🐷 Heo Vàng</a>
-    <a class="btn" style="width:auto" href="index.html">← Về trang chủ</a>
+    <a class="logo" href="index.html"><span class="badge">🐷</span><span class="name">Heo Vàng</span></a>
+    <a class="btn-premium" href="index.html">← Về trang chủ</a>
   </div>
 </header>
 
-<main class="container">
+<main class="container-narrow" style="padding-top:8px;padding-bottom:20px;max-width:620px">
 <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a> › Gửi góp ý</nav>
-<span class="eyebrow">💬 Gửi góp ý</span>
-<h1>Heo Vàng nghe bạn nói đây 🐷👂</h1>
-<p class="lead">Web lỗi ở đâu, thiếu bài học gì, hay chỉ đơn giản muốn khen/chê — mọi góp ý đều được đọc và có thể trở thành cập nhật tiếp theo trên <a href="cap-nhat.html" style="color:var(--gold-deep);font-weight:700">trang Nhật ký cập nhật</a>.</p>
+<span class="eyebrow gold" style="margin-top:14px">💬 Gửi góp ý</span>
+<h1 class="h1-page">Heo Vàng nghe bạn nói đây 🐷👂</h1>
+<p class="lead">Web lỗi ở đâu, thiếu bài học gì, hay chỉ đơn giản muốn khen/chê — mọi góp ý đều được đọc và có thể trở thành cập nhật tiếp theo trên <a href="cap-nhat.html" style="color:var(--green-deep);font-weight:700">trang Nhật ký cập nhật</a>.</p>
 
-<div class="formcard">
+<div class="clay-card">
   <form name="gop-y" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/cam-on.html">
     <input type="hidden" name="form-name" value="gop-y" />
     <p class="hp"><label>Đừng điền vào đây nếu bạn là người thật: <input name="bot-field" /></label></p>
@@ -108,7 +79,7 @@ footer a{color:var(--gold);text-decoration:none}
       <input type="email" id="email" name="email" placeholder="ban@email.com">
     </div>
 
-    <button class="btn" type="submit">Gửi góp ý 🐷</button>
+    <button class="btn btn-gold btn-block" type="submit">Gửi góp ý 🐷</button>
     <p class="note">Góp ý được gửi trực tiếp đến đội ngũ Heo Vàng qua Netlify — không công khai, không dùng cho quảng cáo.</p>
   </form>
 </div>
@@ -118,6 +89,6 @@ footer a{color:var(--gold);text-decoration:none}
 </div>
 
 </main>
-<footer>Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · © 2026 Heo Vàng · <a href="index.html">taichinhchocon.vn</a></footer>
+<footer class="footer-simple">Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · © 2026 Heo Vàng · <a href="index.html">taichinhchocon.vn</a></footer>
 </body>
 </html>

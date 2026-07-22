@@ -31,7 +31,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Schema: Organization + Course + FAQ -->
 <script type="application/ld+json">
@@ -101,505 +101,623 @@
 
 <style>
 :root{
+  --mint:#EAF6F0;
+  --cream:#FFFDF7;
   --gold:#F2A900;
-  --gold-deep:#C97F00;
-  --gold-soft:#FFE7A8;
-  --cream:#FFF8E7;
-  --choco:#3B2A1A;
-  --choco-soft:#6B5540;
-  --coral:#FF6B5E;
-  --coral-deep:#E04E41;
-  --leaf:#2E9E6B;
-  --white:#FFFFFF;
-  --radius:22px;
-  --shadow:0 10px 30px rgba(59,42,26,.10);
-  --font-display:'Baloo 2',system-ui,sans-serif;
-  --font-body:'Be Vietnam Pro',system-ui,sans-serif;
+  --gold-text:#4A2F00;
+  --gold-shade:rgba(168,120,20,.3);
+  --green:#5BC28A;
+  --green-deep:#3FA06C;
+  --ink:#2E3A2A;
+  --premium-bg:#FFF6E5;
+  --footer-bg:#2E3A2A;
+  --footer-text:#EAF6F0;
+  --radius-pill:999px;
+  --fd:'Baloo 2',system-ui,sans-serif;
+  --fb:'Nunito',system-ui,sans-serif;
+
+  --sh-sm: 4px 4px 10px rgba(168,140,80,.18), -4px -4px 10px rgba(255,255,255,.85);
+  --sh-md: 6px 6px 14px rgba(168,140,80,.2), -5px -5px 12px rgba(255,255,255,.9);
+  --sh-lg: 10px 10px 22px rgba(168,140,80,.22), -8px -8px 18px rgba(255,255,255,.9);
+  --sh-xl: 14px 14px 30px rgba(168,140,80,.25), -12px -12px 26px rgba(255,255,255,.9);
+  --sh-2xl: 16px 16px 32px rgba(168,140,80,.3), -14px -14px 28px rgba(255,255,255,.9);
+  --sh-gold: 6px 6px 14px rgba(168,120,20,.3), -4px -4px 10px rgba(255,255,255,.7);
+  --sh-gold-lg: 8px 8px 18px rgba(168,120,20,.35), -6px -6px 14px rgba(255,255,255,.7);
+  --sh-gold-btn: 6px 6px 14px rgba(168,120,20,.3), -4px -4px 10px rgba(255,255,255,.7), inset 2px 2px 4px rgba(255,255,255,.4), inset -2px -3px 6px rgba(0,0,0,.12);
+  --sh-gold-btn-lg: 8px 8px 18px rgba(168,120,20,.35), -6px -6px 14px rgba(255,255,255,.7), inset 2px 2px 4px rgba(255,255,255,.4), inset -2px -3px 6px rgba(0,0,0,.12);
+  --sh-inset-icon: inset 3px 3px 8px rgba(168,140,80,.2), inset -3px -3px 8px rgba(255,255,255,.9);
+  --sh-inset-tab: inset 4px 4px 10px rgba(168,120,20,.3), inset -3px -3px 8px rgba(255,255,255,.3);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--choco);background:var(--cream);line-height:1.65;font-size:16px}
+body{font-family:var(--fb);color:var(--ink);background:var(--mint);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-.container{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--font-display);line-height:1.2}
-h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800}
-.eyebrow{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-soft);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+button{font:inherit}
+.container{max-width:1240px;margin:0 auto;padding:0 40px}
+@media(max-width:640px){.container{padding:0 20px}}
+h1,h2,h3{font-family:var(--fd);line-height:1.2}
+.eyebrow{display:inline-block;background:var(--cream);color:var(--green-deep);padding:9px 20px;border-radius:var(--radius-pill);font-weight:700;font-size:.85rem;box-shadow:var(--sh-sm);margin-bottom:14px}
+.eyebrow.muted{color:rgba(46,58,42,.6)}
+.eyebrow.solid{background:var(--green);color:#fff;box-shadow:4px 4px 10px rgba(63,160,108,.3),-4px -4px 10px rgba(255,255,255,.7)}
+.sec-h2{font-weight:800;font-size:clamp(1.6rem,3.4vw,2.15rem);margin:0 0 26px}
 
 /* ===== Header ===== */
-header{position:sticky;top:0;z-index:50;background:rgba(255,248,231,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--gold-soft)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.logo{font-family:var(--font-display);font-weight:800;font-size:1.35rem;text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo span.pig{font-size:1.6rem}
-.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;font-weight:500;font-size:.95rem}
-.nav-links a:hover{color:var(--gold-deep)}
-.btn{display:inline-block;font-family:var(--font-display);font-weight:700;text-decoration:none;border-radius:999px;padding:12px 26px;transition:transform .15s ease,box-shadow .15s ease;border:none;cursor:pointer;font-size:1rem}
-.btn:focus-visible{outline:3px solid var(--choco);outline-offset:3px}
-.btn-coral{background:var(--coral);color:var(--white);box-shadow:0 6px 0 var(--coral-deep)}
-.btn-coral:hover{transform:translateY(-2px)}
-.btn-coral:active{transform:translateY(3px);box-shadow:0 2px 0 var(--coral-deep)}
-.btn-ghost{background:transparent;color:var(--choco);border:2.5px solid var(--choco);padding:10px 24px}
-.btn-ghost:hover{background:var(--choco);color:var(--cream)}
-.btn-sm{padding:9px 20px;font-size:.9rem}
-@media(max-width:720px){.nav-links{display:none}}
+header{position:sticky;top:0;z-index:50;background:rgba(234,246,240,.88);backdrop-filter:blur(10px);box-shadow:0 4px 18px rgba(120,110,70,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 40px}
+@media(max-width:640px){.nav{padding:14px 20px}}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .badge{width:46px;height:46px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:var(--sh-gold-btn)}
+.logo span.name{font-family:var(--fd);font-weight:800;font-size:1.375rem;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:24px;flex-wrap:wrap;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem}
+.nav-links a:hover{color:var(--green-deep)}
+@media(max-width:860px){.nav-links{display:none}}
+.btn-premium{text-decoration:none;background:var(--gold);color:var(--gold-text);font-family:var(--fd);font-weight:700;font-size:.9rem;padding:11px 22px;border-radius:var(--radius-pill);white-space:nowrap;box-shadow:var(--sh-gold-btn);border:none;cursor:pointer}
+.btn-premium:hover{transform:translateY(-2px)}
+
+/* ===== Buttons ===== */
+.btn{display:inline-block;text-decoration:none;font-family:var(--fd);font-weight:700;border-radius:var(--radius-pill);cursor:pointer;transition:transform .15s;border:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:var(--gold-text);padding:16px 30px;font-size:1rem;box-shadow:var(--sh-gold-btn-lg)}
+.btn-gold-sm{background:var(--gold);color:var(--gold-text);padding:12px 24px;font-size:.9rem;box-shadow:var(--sh-gold-btn)}
+.btn-outline{background:var(--mint);color:var(--green-deep);padding:16px 30px;font-size:1rem;box-shadow:8px 8px 18px rgba(168,140,80,.18),-6px -6px 14px rgba(255,255,255,.9);border:2px solid rgba(63,160,108,.3)}
+.link-arrow{text-decoration:none;color:var(--green-deep);font-weight:800;font-size:.92rem}
+.link-arrow:hover{text-decoration:underline}
 
 /* ===== Hero ===== */
-.hero{padding:64px 0 40px;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-@media(max-width:820px){.hero-grid{grid-template-columns:1fr;text-align:center}}
-.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:18px}
-.hero h1 em{font-style:normal;color:var(--gold-deep);position:relative}
-.hero p.lead{font-size:1.1rem;color:var(--choco-soft);margin-bottom:26px;max-width:32rem}
-@media(max-width:820px){.hero p.lead{margin:0 auto 26px}}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-@media(max-width:820px){.hero-cta{justify-content:center}}
-.trust{display:flex;gap:18px;margin-top:26px;flex-wrap:wrap;font-size:.9rem;font-weight:600;color:var(--choco-soft)}
-@media(max-width:820px){.trust{justify-content:center}}
-.trust span::before{content:"✓ ";color:var(--leaf);font-weight:800}
+.hero{padding:70px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;text-align:center}}
+.hero h1{font-weight:800;font-size:clamp(2rem,5vw,3.25rem);line-height:1.12;margin:0 0 22px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{font-size:1.125rem;line-height:1.6;color:rgba(46,58,42,.75);margin:0 0 30px;max-width:32rem}
+@media(max-width:900px){.hero p.lead{margin-inline:auto}}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+@media(max-width:900px){.hero-cta{justify-content:center}}
+.trust{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.trust{justify-content:center}}
+.trust span{background:var(--cream);padding:8px 16px;border-radius:var(--radius-pill);font-size:.8rem;font-weight:700;color:rgba(46,58,42,.7);box-shadow:var(--sh-sm)}
 
-/* Piggy scene: coin drop animation */
-.piggy-scene{position:relative;display:flex;justify-content:center;align-items:flex-end;height:300px}
-.piggy{font-size:9rem;filter:drop-shadow(0 14px 24px rgba(201,127,0,.35))}
-.coin{position:absolute;top:0;left:50%;font-size:2.4rem;animation:drop 2.6s ease-in infinite}
-.coin.c2{animation-delay:.9s;margin-left:-40px}
-.coin.c3{animation-delay:1.7s;margin-left:36px}
-@keyframes drop{
-  0%{transform:translate(-50%,-30px) rotate(0);opacity:0}
-  18%{opacity:1}
-  70%{transform:translate(-50%,150px) rotate(320deg);opacity:1}
-  82%{transform:translate(-50%,170px) rotate(360deg);opacity:0}
-  100%{opacity:0}
-}
-@media(prefers-reduced-motion:reduce){
-  .coin{animation:none;opacity:0}
-  html{scroll-behavior:auto}
-}
+.hero-art{position:relative}
+.hero-frame{position:relative;background:var(--cream);border-radius:48px;padding:18px;box-shadow:var(--sh-2xl)}
+.hero-pic{width:100%;height:420px;border-radius:36px;background:linear-gradient(150deg,#FFF3D6,var(--mint) 65%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;overflow:hidden}
+.hero-pic .emoji-cluster{font-size:5.5rem;line-height:1}
+.hero-pic small{font-family:var(--fd);font-weight:700;font-size:.85rem;color:rgba(46,58,42,.55)}
+.floaty1{position:absolute;top:-20px;left:-24px;width:64px;height:64px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.9rem;box-shadow:var(--sh-gold-lg);animation:floaty 5s ease-in-out infinite}
+.floaty2{position:absolute;bottom:10px;right:-18px;width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:8px 8px 16px rgba(63,160,108,.3),-6px -6px 14px rgba(255,255,255,.8);animation:floaty2 6s ease-in-out infinite}
+.hero-tag{position:absolute;bottom:-24px;left:40px;background:var(--cream);padding:10px 18px;border-radius:20px;font-weight:800;font-family:var(--fd);font-size:.875rem;box-shadow:var(--sh-md)}
+@media(max-width:900px){.floaty1,.floaty2,.hero-tag{display:none}}
+@keyframes floaty{0%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(4deg)}100%{transform:translateY(0) rotate(-4deg)}}
+@keyframes floaty2{0%{transform:translateY(0) rotate(6deg)}50%{transform:translateY(-10px) rotate(-6deg)}100%{transform:translateY(0) rotate(6deg)}}
+@media(prefers-reduced-motion:reduce){.floaty1,.floaty2{animation:none}}
 
-/* ===== Featured episode ===== */
-.section{padding:56px 0}
-.ep-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr}
-@media(max-width:820px){.ep-card{grid-template-columns:1fr}}
-.video-wrap{position:relative;aspect-ratio:16/9;background:var(--choco)}
-.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.ep-info{padding:30px 34px}
-.ep-info h3{font-size:1.5rem;font-weight:800;margin-bottom:10px}
-.ep-info p{color:var(--choco-soft);margin-bottom:18px}
-table.vocab{width:100%;border-collapse:collapse;font-size:.92rem;margin-bottom:20px}
-table.vocab th{text-align:left;font-family:var(--font-display);color:var(--gold-deep);padding:6px 8px;border-bottom:2px solid var(--gold-soft)}
-table.vocab td{padding:6px 8px;border-bottom:1px solid #F2E8D0}
-table.vocab td.ipa{color:var(--choco-soft);font-style:italic}
+/* ===== Section spacing ===== */
+.section{padding:50px 0 70px}
+.section.hero-section{padding:70px 0 40px}
 
-/* ===== Signature: Suri's saving journey ===== */
-.journey{background:var(--choco);color:var(--cream);border-radius:var(--radius);padding:44px 40px;position:relative}
-.journey .eyebrow{background:rgba(242,169,0,.18);color:var(--gold)}
-.journey h2{color:var(--white);margin-bottom:8px}
-.journey p.sub{color:#D8C6AE;margin-bottom:34px;max-width:36rem}
-.track{position:relative;height:6px;background:#5A4530;border-radius:99px;margin:60px 6px 14px}
-.track-fill{position:absolute;left:0;top:0;height:100%;width:4.2%;background:linear-gradient(90deg,var(--gold),#FFD35C);border-radius:99px}
-.stops{display:flex;justify-content:space-between;position:relative;margin-top:-46px}
-.stop{text-align:center;flex:1;position:relative}
-.stop .dot{font-size:2rem;display:block;margin-bottom:34px}
-.stop .lbl{font-family:var(--font-display);font-weight:700;font-size:.82rem;color:#D8C6AE;display:block;margin-top:20px}
-.stop .lbl b{color:var(--gold);display:block;font-size:.95rem}
-.stop.goal .dot{font-size:2.5rem}
-@media(max-width:720px){
-  .stops{flex-wrap:wrap;gap:18px;margin-top:16px}
-  .stop{flex:1 1 40%}
-  .stop .dot{margin-bottom:6px}
-  .track{display:none}
-  .stop .lbl{margin-top:0}
-}
+/* ===== Tập mới ===== */
+.ep-card{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start;background:var(--cream);border-radius:36px;padding:32px;box-shadow:var(--sh-xl)}
+@media(max-width:860px){.ep-card{grid-template-columns:1fr}}
+.video-frame{position:relative;border-radius:26px;overflow:hidden;box-shadow:8px 8px 20px rgba(168,140,80,.25),-6px -6px 16px rgba(255,255,255,.8);aspect-ratio:16/9;background:linear-gradient(135deg,#3B2A1A,#2E3A2A);display:flex;align-items:center;justify-content:center}
+.video-frame .playbtn{width:70px;height:70px;border-radius:50%;background:rgba(242,169,0,.92);display:flex;align-items:center;justify-content:center;box-shadow:6px 6px 16px rgba(0,0,0,.25);flex-shrink:0}
+.video-frame .playbtn i{width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid #fff;margin-left:6px;display:block}
+.video-frame .cap{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#FFE7A8;font-size:.8rem;font-weight:700}
+.ep-desc{font-size:.97rem;line-height:1.6;color:rgba(46,58,42,.75);margin:18px 0 10px}
 
-/* ===== Pillars & episodes ===== */
-.pillar{margin-bottom:44px}
-.pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.pillar-head .badge{font-family:var(--font-display);font-weight:800;font-size:1.05rem;background:var(--gold);color:var(--choco);width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pillar-head h3{font-size:1.3rem;font-weight:800}
-.pillar-head small{display:block;font-family:var(--font-body);font-weight:500;color:var(--choco-soft);font-size:.85rem}
-.ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:820px){.ep-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.ep-grid{grid-template-columns:1fr}}
-.ep-item{background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:0 4px 14px rgba(59,42,26,.06);text-decoration:none;transition:transform .15s ease;display:block}
-.ep-item:hover{transform:translateY(-3px)}
-.ep-item .num{font-family:var(--font-display);font-weight:800;color:var(--gold-deep);font-size:.8rem}
-.ep-item .name{font-family:var(--font-display);font-weight:700;font-size:1rem;margin:2px 0 4px}
-.ep-item .words{font-size:.8rem;color:var(--choco-soft)}
+.vocab-head{font-family:var(--fd);font-weight:700;font-size:1rem;margin-bottom:14px}
+.vocab-head small{font-weight:400;font-size:.78rem;color:rgba(46,58,42,.5)}
+.flip-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.flip-card{cursor:pointer;perspective:800px;height:88px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.flip-front{background:var(--mint);box-shadow:var(--sh-sm)}
+.flip-front .w{font-family:var(--fd);font-weight:700;font-size:1.05rem}
+.flip-front .ipa{font-size:.75rem;color:rgba(46,58,42,.55);margin-top:3px}
+.flip-back{background:var(--green);transform:rotateY(180deg);box-shadow:4px 4px 10px rgba(63,160,108,.3);color:#fff;font-family:var(--fd);font-weight:700;font-size:1.05rem}
+.flip-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:16px}
 
-/* ===== Mùa 2 — Premium ===== */
-.season2{background:linear-gradient(180deg,#2A1F14,var(--choco));border-radius:var(--radius);padding:44px 40px}
-.season2 .eyebrow{background:rgba(242,169,0,.18);color:var(--gold)}
-.season2 h2{color:var(--white)}
-.season2 p.sub{color:#D8C6AE;max-width:40rem;margin:8px 0 30px}
-.season2 .pillar-head h3{color:var(--white)}
-.season2 .pillar-head small{color:#D8C6AE}
-.season2 .ep-item{background:rgba(255,255,255,.06);box-shadow:none;position:relative}
-.season2 .ep-item:hover{transform:translateY(-3px);background:rgba(255,255,255,.1)}
-.season2 .ep-item .num{color:var(--gold)}
-.season2 .ep-item .name{color:var(--white)}
-.season2 .ep-item .words{color:#C9B491}
-.season2 .lock{position:absolute;top:14px;right:14px;font-size:.9rem}
-.season2-cta{text-align:center;margin-top:8px}
-.season2-cta .btn{margin-top:6px}
+/* ===== Hành trình ===== */
+.journey-lead{font-size:1.03rem;line-height:1.6;color:rgba(46,58,42,.75);max-width:42rem;margin:0 0 40px}
+.journey-row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+.journey-stage{text-decoration:none;flex:1;min-width:150px;background:var(--cream);border-radius:26px;padding:22px 18px;text-align:center;box-shadow:var(--sh-lg);border:none;cursor:pointer;color:var(--ink);font-family:var(--fb)}
+.journey-stage:hover{transform:translateY(-3px)}
+.journey-stage .dot{width:52px;height:52px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 12px;box-shadow:var(--sh-inset-icon)}
+.journey-stage .lbl{font-family:var(--fd);font-weight:700;font-size:.9rem}
+.journey-stage .rng{font-size:.75rem;color:rgba(46,58,42,.5);margin-top:4px}
 
+/* ===== 24 bài học ===== */
+.season-tabs{display:flex;gap:14px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{font-family:var(--fd);font-weight:700;font-size:.9rem;padding:12px 26px;border-radius:var(--radius-pill);border:none;cursor:pointer;background:var(--cream);color:rgba(46,58,42,.6);box-shadow:var(--sh-md)}
+.tab-btn.active{background:var(--gold);color:var(--gold-text);box-shadow:var(--sh-inset-tab)}
 
-/* ===== Parents ===== */
-.parents{background:var(--gold-soft);border-radius:var(--radius);padding:44px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-@media(max-width:820px){.parents{grid-template-columns:1fr}}
-.parents ul{list-style:none;margin:18px 0 26px}
-.parents li{padding-left:30px;position:relative;margin-bottom:12px;font-weight:500}
-.parents li::before{content:"🪙";position:absolute;left:0}
-.parents .big-pig{font-size:7rem;text-align:center;filter:drop-shadow(0 10px 18px rgba(201,127,0,.3))}
+.premium-banner{background:var(--premium-bg);border-radius:28px;padding:26px 30px;margin-bottom:26px;box-shadow:var(--sh-md);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.premium-banner .t1{font-family:var(--fd);font-weight:700;font-size:1.06rem;margin-bottom:6px}
+.premium-banner .t2{font-size:.9rem;color:rgba(46,58,42,.7);max-width:36rem}
+
+.pillar-list{display:flex;flex-direction:column;gap:18px}
+.pillar{background:var(--cream);border-radius:28px;padding:6px;box-shadow:var(--sh-lg)}
+.pillar-head{display:flex;align-items:center;gap:18px;padding:18px 22px;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:var(--fb)}
+.pillar-head .ico{width:44px;height:44px;flex:none;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:1.375rem}
+.pillar-head .info{flex:1}
+.pillar-head .title{font-family:var(--fd);font-weight:700;font-size:1.125rem}
+.pillar-head .desc{font-size:.8rem;color:rgba(46,58,42,.55);margin-top:2px}
+.pillar-head .chev{font-size:1.125rem;color:rgba(46,58,42,.5);transition:transform .2s}
+.pillar.open .chev{transform:rotate(180deg)}
+.pillar-body{display:none;grid-template-columns:repeat(3,1fr);gap:14px;padding:6px 22px 22px}
+.pillar.open .pillar-body{display:grid}
+@media(max-width:820px){.pillar-body{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pillar-body{grid-template-columns:1fr}}
+
+.lesson-card{background:var(--cream);border-radius:20px;padding:16px 18px;cursor:pointer;box-shadow:var(--sh-md);text-decoration:none;color:var(--ink);display:block;border:none;text-align:left;font-family:var(--fb);width:100%}
+.lesson-card.locked{background:#F4EFE3;box-shadow:6px 6px 14px rgba(168,140,80,.15),-5px -5px 12px rgba(255,255,255,.8);opacity:.8}
+.lesson-card .top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.lesson-card .num{font-family:var(--fd);font-weight:800;font-size:.8rem;color:var(--gold)}
+.lesson-card .name{font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:6px;line-height:1.3}
+.lesson-card .words{font-size:.75rem;color:rgba(46,58,42,.55)}
+.lesson-card.locked .words{color:rgba(46,58,42,.45);font-style:italic}
+
+/* ===== Cho ba mẹ ===== */
+.parents-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}
+@media(max-width:900px){.parents-grid{grid-template-columns:1fr}}
+.parents-frame{background:var(--cream);border-radius:36px;padding:16px;box-shadow:var(--sh-xl)}
+.parents-pic{width:100%;height:340px;border-radius:26px;background:linear-gradient(150deg,#DFF3E8,var(--mint) 70%);display:flex;align-items:center;justify-content:center;font-size:5rem}
+.reason-list{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+.reason{display:flex;gap:14px;align-items:flex-start;background:var(--cream);border-radius:20px;padding:16px 20px;box-shadow:var(--sh-sm)}
+.reason .ico{font-size:1.125rem;flex-shrink:0}
+.reason p{font-size:.9375rem;line-height:1.5;color:rgba(46,58,42,.8)}
+
+/* ===== Premium ===== */
+.premium-card{background:var(--premium-bg);border-radius:40px;padding:44px;display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:center;box-shadow:var(--sh-xl)}
+@media(max-width:860px){.premium-card{grid-template-columns:1fr;padding:30px}}
+.premium-frame{background:var(--cream);border-radius:30px;padding:14px;box-shadow:var(--sh-md)}
+.premium-pic{width:100%;height:300px;border-radius:22px;background:linear-gradient(150deg,#FFE7A8,var(--premium-bg) 70%);display:flex;align-items:center;justify-content:center;font-size:5rem}
+.premium-badge{display:inline-block;background:var(--gold);color:var(--gold-text);padding:8px 18px;border-radius:var(--radius-pill);font-weight:700;font-size:.8rem;margin-bottom:14px}
+.premium-price{font-family:var(--fd);font-weight:800;font-size:2rem;color:var(--gold);margin-bottom:22px}
 
 /* ===== FAQ ===== */
-details{background:var(--white);border-radius:16px;margin-bottom:12px;box-shadow:0 4px 14px rgba(59,42,26,.06)}
-summary{cursor:pointer;font-family:var(--font-display);font-weight:700;padding:18px 22px;list-style:none;display:flex;justify-content:space-between;align-items:center}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:1.4rem;color:var(--gold-deep)}
-details[open] summary::after{content:"–"}
-details p{padding:0 22px 18px;color:var(--choco-soft)}
+.faq-list{display:flex;flex-direction:column;gap:14px}
+.faq-item{background:var(--cream);border-radius:24px;padding:6px;box-shadow:var(--sh-md)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:var(--fd);font-weight:700;font-size:.97rem}
+.faq-chev{font-size:1.125rem;color:rgba(46,58,42,.5);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-chev{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 20px;font-size:.9rem;line-height:1.6;color:rgba(46,58,42,.75)}
+.faq-item.open .faq-a{display:block}
 
 /* ===== Footer ===== */
-footer{background:var(--choco);color:#D8C6AE;padding:44px 0 30px;margin-top:56px}
-footer .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-footer .logo{color:var(--cream)}
-footer a{color:#D8C6AE;text-decoration:none}
-footer a:hover{color:var(--gold)}
-footer ul{list-style:none}
-footer li{margin-bottom:8px;font-size:.92rem}
-footer .legal{border-top:1px solid #5A4530;margin-top:30px;padding-top:20px;font-size:.85rem;text-align:center}
+footer{background:var(--footer-bg);color:var(--footer-text);border-radius:48px 48px 0 0;padding:56px 40px 30px}
+@media(max-width:640px){footer{padding:44px 20px 24px}}
+.foot-inner{max-width:1240px;margin:0 auto}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.foot-logo .badge{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.foot-logo span{font-family:var(--fd);font-weight:800;font-size:1.19rem;color:#fff}
+.foot-desc{font-size:.875rem;line-height:1.6;color:rgba(234,246,240,.65);max-width:280px}
+.foot-col-title{font-family:var(--fd);font-weight:700;font-size:.875rem;margin-bottom:14px;color:var(--gold)}
+.foot-links{display:flex;flex-direction:column;gap:10px;font-size:.875rem;list-style:none;color:rgba(234,246,240,.75)}
+.foot-links a{text-decoration:none;color:inherit}
+.foot-links a:hover{color:var(--gold)}
+.foot-legal{border-top:1px solid rgba(234,246,240,.15);padding-top:22px;font-size:.8125rem;color:rgba(234,246,240,.5);text-align:center}
+
+/* ===== Premium modal ===== */
+.overlay{position:fixed;inset:0;background:rgba(46,58,42,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.modal{background:var(--cream);border-radius:36px;padding:38px;max-width:420px;width:100%;position:relative;box-shadow:20px 20px 40px rgba(0,0,0,.25)}
+.modal .close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;border:none;background:var(--mint);font-size:1rem;cursor:pointer;box-shadow:3px 3px 8px rgba(168,140,80,.2)}
+.modal .emoji{font-size:2.5rem;margin-bottom:10px}
+.modal h3{font-weight:800;font-size:1.5rem;margin:0 0 10px}
+.modal p{font-size:.9rem;line-height:1.6;color:rgba(46,58,42,.75);margin:0 0 20px}
+.modal .btn-gold{width:100%;text-align:center;padding:15px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="container nav">
-    <a class="logo" href="index.html"><span class="pig">🐷</span>Heo Vàng</a>
+  <div class="nav">
+    <a class="logo" href="#top">
+      <span class="badge">🐷</span>
+      <span class="name">Heo Vàng</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#tap-moi">Tập mới</a></li>
       <li><a href="#hanh-trinh">Hành trình</a></li>
       <li><a href="#bai-hoc">24 bài học</a></li>
-      <li><a href="#mua-2">Mùa 2 🔒</a></li>
-      <li><a href="tudien.html">Từ điển</a></li>
-      <li><a href="hoi-heo.html">Hỏi chú Heo</a></li>
       <li><a href="#ba-me">Cho ba mẹ</a></li>
-      <li><a class="btn btn-sm" style="background:var(--choco);box-shadow:0 5px 0 #241a10" href="premium.html">🔓 Premium</a></li>
-      <li><a class="btn btn-coral btn-sm" href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">Đăng ký kênh</a></li>
+      <li><a href="#faq">Hỏi đáp</a></li>
     </ul>
+    <a class="btn-premium" href="premium.html">🔓 Premium</a>
   </div>
 </header>
 
-<main>
+<main id="top">
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container hero-grid">
+<section class="hero container">
+  <div class="hero-grid">
     <div>
       <span class="eyebrow">Song ngữ Việt–Anh · 6–12 tuổi</span>
-      <h1>Dạy con về <em>tiền</em>,<br>qua video 2 ba con</h1>
+      <h1>Dạy con về <em>tiền</em>, qua video 2 ba con</h1>
       <p class="lead">24 tập hoạt hình theo khung OECD/INFE — Suri học kiếm, tiêu, tiết kiệm và đầu tư cùng ba Thanh. Mỗi tập kèm 6 từ vựng tiếng Anh, video mới mỗi tuần.</p>
       <div class="hero-cta">
-        <a class="btn btn-coral" href="#tap-moi">▶ Xem Tập 1 miễn phí</a>
-        <a class="btn btn-ghost" href="#bai-hoc">Xem 24 bài học</a>
+        <a class="btn btn-gold" href="#tap-moi">▶ Xem Tập 1 miễn phí</a>
+        <a class="btn btn-outline" href="#bai-hoc">Xem 24 bài học</a>
       </div>
       <div class="trust">
-        <span>Không quảng cáo</span>
-        <span>Không tiền thật</span>
-        <span>Miễn phí 100%</span>
+        <span>🚫 Không quảng cáo</span>
+        <span>🚫 Không tiền thật</span>
+        <span>✅ Miễn phí 100%</span>
       </div>
     </div>
-    <div class="piggy-scene" aria-hidden="true">
-      <span class="coin">🪙</span>
-      <span class="coin c2">🪙</span>
-      <span class="coin c3">🪙</span>
-      <span class="piggy">🐷</span>
+    <div class="hero-art">
+      <div class="hero-frame">
+        <div class="hero-pic" aria-hidden="true">
+          <span class="emoji-cluster">👨‍👧🚲</span>
+          <small>Thanh &amp; Suri</small>
+        </div>
+      </div>
+      <div class="floaty1" aria-hidden="true">🪙</div>
+      <div class="floaty2" aria-hidden="true">🪙</div>
+      <div class="hero-tag">🐷 Heo đất của Suri</div>
     </div>
   </div>
 </section>
 
-<!-- FEATURED EPISODE -->
-<section class="section" id="tap-moi">
-  <div class="container">
-    <span class="eyebrow">Tập mới nhất</span>
-    <h2 style="margin-bottom:24px">Tập 1 — Tiền là gì?</h2>
-    <div class="ep-card">
-      <div class="video-wrap">
-        <!-- Thay VIDEO_ID bằng ID YouTube thật -->
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Tập 1 — Tiền là gì? | Heo Vàng" loading="lazy" allowfullscreen></iframe>
-      </div>
-      <div class="ep-info">
-        <h3>6 từ vựng của tập này</h3>
-        <p>Suri phát hiện chiếc xe đạp mơ ước — và bài học đầu tiên về tiền bắt đầu.</p>
-        <table class="vocab">
-          <tr><th>Từ</th><th>IPA</th><th>Nghĩa</th></tr>
-          <tr><td><b>money</b></td><td class="ipa">/ˈmʌni/</td><td>tiền</td></tr>
-          <tr><td><b>coin</b></td><td class="ipa">/kɔɪn/</td><td>tiền xu</td></tr>
-          <tr><td><b>bill</b></td><td class="ipa">/bɪl/</td><td>tiền giấy</td></tr>
-          <tr><td><b>buy</b></td><td class="ipa">/baɪ/</td><td>mua</td></tr>
-          <tr><td><b>sell</b></td><td class="ipa">/sel/</td><td>bán</td></tr>
-          <tr><td><b>price</b></td><td class="ipa">/praɪs/</td><td>giá</td></tr>
-        </table>
-        <a class="btn btn-coral btn-sm" href="tap-01.html">Đọc bài học đầy đủ →</a>
-      </div>
+<!-- TẬP MỚI NHẤT -->
+<section class="section container" id="tap-moi">
+  <span class="eyebrow solid">Tập mới nhất</span>
+  <h2 class="sec-h2">Tập 1 — Tiền là gì?</h2>
+  <div class="ep-card">
+    <div>
+      <a class="video-frame" href="tap-01.html" aria-label="Xem Tập 1: Tiền là gì?">
+        <span class="playbtn" aria-hidden="true"><i></i></span>
+        <span class="cap">Video tập này đang được sản xuất</span>
+      </a>
+      <p class="ep-desc">Suri phát hiện chiếc xe đạp mơ ước — và bài học đầu tiên về tiền bắt đầu.</p>
+      <a class="link-arrow" href="tap-01.html">Đọc bài học đầy đủ →</a>
+    </div>
+    <div>
+      <div class="vocab-head">6 từ vựng của tập này <small>(bấm để lật)</small></div>
+      <div class="flip-grid" id="flipGrid"></div>
     </div>
   </div>
 </section>
 
-<!-- SIGNATURE: SURI'S JOURNEY -->
-<section class="section" id="hanh-trinh">
-  <div class="container">
-    <div class="journey">
-      <span class="eyebrow">Câu chuyện xuyên suốt</span>
-      <h2>Hành trình heo đất của Suri 🚲</h2>
-      <p class="sub">Suri mơ ước một chiếc xe đạp. Qua 24 tập, con sẽ cùng Suri kiếm tiền, tiết kiệm, đầu tư — và tự đạt được mục tiêu đầu tiên trong đời.</p>
-      <div class="stops">
-        <div class="stop"><span class="dot">🪙</span><span class="lbl"><b>Tập 1–6</b>Tiền &amp; Giao dịch</span></div>
-        <div class="stop"><span class="dot">🐷</span><span class="lbl"><b>Tập 7–12</b>Tiết kiệm &amp; Kế hoạch</span></div>
-        <div class="stop"><span class="dot">🌱</span><span class="lbl"><b>Tập 13–18</b>Rủi ro &amp; Đầu tư</span></div>
-        <div class="stop"><span class="dot">🏦</span><span class="lbl"><b>Tập 19–23</b>Thế giới tài chính</span></div>
-        <div class="stop goal"><span class="dot">🚲</span><span class="lbl"><b>Tập 24</b>Đạt ước mơ!</span></div>
+<!-- HÀNH TRÌNH -->
+<section class="section container" id="hanh-trinh">
+  <span class="eyebrow muted">Câu chuyện xuyên suốt</span>
+  <h2 class="sec-h2">Hành trình heo đất của Suri 🚲</h2>
+  <p class="journey-lead">Suri mơ ước một chiếc xe đạp. Qua 24 tập, con sẽ cùng Suri kiếm tiền, tiết kiệm, đầu tư — và tự đạt được mục tiêu đầu tiên trong đời.</p>
+  <div class="journey-row" id="journeyRow"></div>
+</section>
+
+<!-- 24 BÀI HỌC -->
+<section class="section container" id="bai-hoc">
+  <span class="eyebrow muted">Chương trình học</span>
+  <h2 class="sec-h2">24 bài học theo khung OECD/INFE</h2>
+
+  <div class="season-tabs" id="seasonTabs"></div>
+  <div id="premiumBanner"></div>
+  <div class="pillar-list" id="pillarList"></div>
+</section>
+
+<!-- CHO BA MẸ -->
+<section class="section container" id="ba-me">
+  <div class="parents-grid">
+    <div class="parents-frame">
+      <div class="parents-pic" aria-hidden="true">👨‍👩‍👧💬</div>
+    </div>
+    <div>
+      <span class="eyebrow muted">👨‍👩‍👧 Cho ba mẹ</span>
+      <h2 class="sec-h2" style="margin-bottom:22px">Vì sao dạy con về tiền từ 6 tuổi?</h2>
+      <div class="reason-list">
+        <div class="reason"><span class="ico">🌱</span><p>Thói quen tiền bạc của trẻ hình thành rất sớm — càng bắt đầu sớm, con càng tự tin với tiền khi lớn.</p></div>
+        <div class="reason"><span class="ico">🌍</span><p>Nội dung bám khung OECD/INFE — chuẩn quốc tế về năng lực tài chính cho trẻ em.</p></div>
+        <div class="reason"><span class="ico">🔤</span><p>Học kèm 6 từ vựng tiếng Anh mỗi tập — một video, hai kỹ năng.</p></div>
+        <div class="reason"><span class="ico">💬</span><p>Ba mẹ xem cùng con: cuối mỗi tập có câu hỏi để cả nhà thảo luận.</p></div>
       </div>
-      <div class="track"><div class="track-fill"></div></div>
+      <a class="link-arrow" href="cho-ba-me.html">Đọc hướng dẫn cho ba mẹ →</a>
     </div>
   </div>
 </section>
 
-<!-- 24 EPISODES -->
-<section class="section" id="bai-hoc">
-  <div class="container">
-    <span class="eyebrow">Chương trình học</span>
-    <h2 style="margin-bottom:30px">24 bài học theo khung OECD/INFE</h2>
-
-    <div class="pillar">
-      <div class="pillar-head">
-        <span class="badge">1</span>
-        <h3>Tiền &amp; Giao dịch <small>Tập 1–6 · Hiểu tiền là gì và cách dùng tiền</small></h3>
-      </div>
-      <div class="ep-grid">
-        <a class="ep-item" href="tap-01.html"><span class="num">Tập 1</span><span class="name">Tiền là gì?</span><span class="words">money · coin · bill · buy · sell · price</span></a>
-        <a class="ep-item" href="tap-02.html"><span class="num">Tập 2</span><span class="name">Tiền đến từ đâu?</span><span class="words">work · earn · salary · job</span></a>
-        <a class="ep-item" href="tap-03.html"><span class="num">Tập 3</span><span class="name">Đi chợ cùng ba</span><span class="words">market · pay · change · cheap · expensive</span></a>
-        <a class="ep-item" href="tap-04.html"><span class="num">Tập 4</span><span class="name">Tiền giấy &amp; tiền trong điện thoại</span><span class="words">cash · card · bank · transfer</span></a>
-        <a class="ep-item" href="tap-05.html"><span class="num">Tập 5</span><span class="name">Đắt hay rẻ? So sánh giá</span><span class="words">compare · cost · value</span></a>
-        <a class="ep-item" href="tap-06.html"><span class="num">Tập 6</span><span class="name">Mua thứ cần, không mua thứ thích</span><span class="words">need · want · choose</span></a>
-      </div>
+<!-- PREMIUM -->
+<section class="section container" id="premium">
+  <div class="premium-card">
+    <div class="premium-frame">
+      <div class="premium-pic" aria-hidden="true">🎓🐷</div>
     </div>
-
-    <div class="pillar">
-      <div class="pillar-head">
-        <span class="badge">2</span>
-        <h3>Tiết kiệm &amp; Kế hoạch <small>Tập 7–12 · Heo đất và mục tiêu đầu tiên</small></h3>
-      </div>
-      <div class="ep-grid">
-        <a class="ep-item" href="tap-07.html"><span class="num">Tập 7</span><span class="name">Chú heo đất đầu tiên</span><span class="words">save · piggy bank · goal</span></a>
-        <a class="ep-item" href="tap-08.html"><span class="num">Tập 8</span><span class="name">Để dành mua món đồ mơ ước</span><span class="words">wish · plan · wait</span></a>
-        <a class="ep-item" href="tap-09.html"><span class="num">Tập 9</span><span class="name">Tiền tiêu vặt của Suri</span><span class="words">allowance · weekly · spend</span></a>
-        <a class="ep-item" href="tap-10.html"><span class="num">Tập 10</span><span class="name">Chia tiền 3 hũ</span><span class="words">jar · share · give</span></a>
-        <a class="ep-item" href="tap-11.html"><span class="num">Tập 11</span><span class="name">Kiên nhẫn = phần thưởng lớn hơn</span><span class="words">patient · reward · later</span></a>
-        <a class="ep-item" href="tap-12.html"><span class="num">Tập 12</span><span class="name">Suri đạt mục tiêu đầu tiên</span><span class="words">achieve · proud · count</span></a>
-      </div>
-    </div>
-
-    <div class="pillar">
-      <div class="pillar-head">
-        <span class="badge">3</span>
-        <h3>Rủi ro &amp; Đầu tư <small>Tập 13–18 · Tiền đẻ ra tiền, và cách tự bảo vệ</small></h3>
-      </div>
-      <div class="ep-grid">
-        <a class="ep-item" href="tap-13.html"><span class="num">Tập 13</span><span class="name">Gửi ngân hàng — tiền đẻ ra tiền</span><span class="words">deposit · interest · grow</span></a>
-        <a class="ep-item" href="tap-14.html"><span class="num">Tập 14</span><span class="name">Trồng cây tiền: đầu tư là gì?</span><span class="words">invest · seed · harvest</span></a>
-        <a class="ep-item" href="tap-15.html"><span class="num">Tập 15</span><span class="name">Không bỏ trứng vào một giỏ</span><span class="words">basket · risk · safe</span></a>
-        <a class="ep-item" href="tap-16.html"><span class="num">Tập 16</span><span class="name">Lời và lỗ</span><span class="words">profit · loss · win · lose</span></a>
-        <a class="ep-item" href="tap-17.html"><span class="num">Tập 17</span><span class="name">Cẩn thận lừa đảo!</span><span class="words">scam · stranger · protect</span></a>
-        <a class="ep-item" href="tap-18.html"><span class="num">Tập 18</span><span class="name">Suri mở "cửa hàng" đầu tiên</span><span class="words">shop · customer · service</span></a>
-      </div>
-    </div>
-
-    <div class="pillar">
-      <div class="pillar-head">
-        <span class="badge">4</span>
-        <h3>Thế giới tài chính <small>Tập 19–24 · Ngân hàng, vay mượn, quảng cáo và cho đi</small></h3>
-      </div>
-      <div class="ep-grid">
-        <a class="ep-item" href="tap-19.html"><span class="num">Tập 19</span><span class="name">Ngân hàng hoạt động thế nào?</span><span class="words">bank · borrow · lend</span></a>
-        <a class="ep-item" href="tap-20.html"><span class="num">Tập 20</span><span class="name">Vay mượn phải trả</span><span class="words">loan · debt · promise</span></a>
-        <a class="ep-item" href="tap-21.html"><span class="num">Tập 21</span><span class="name">Quảng cáo muốn gì ở con?</span><span class="words">ad · trick · smart</span></a>
-        <a class="ep-item" href="tap-22.html"><span class="num">Tập 22</span><span class="name">Tiền của các nước</span><span class="words">dollar · currency · exchange</span></a>
-        <a class="ep-item" href="tap-23.html"><span class="num">Tập 23</span><span class="name">Cho đi — tiền làm việc tốt</span><span class="words">charity · help · kind</span></a>
-        <a class="ep-item" href="tap-24.html"><span class="num">Tập 24</span><span class="name">Suri — giám đốc nhí</span><span class="words">dream · future · plan</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MÙA 2 — NÂNG CAO (PREMIUM) -->
-<section class="section" id="mua-2">
-  <div class="container">
-    <div class="season2">
-      <span class="eyebrow">🔒 Mùa 2 · Dành cho thành viên Premium</span>
-      <h2>24 bài học nâng cao</h2>
-      <p class="sub">24 tập gốc luôn miễn phí mãi mãi. Khi con đã sẵn sàng cho thử thách khó hơn, Mùa 2 đưa Suri lớn hơn một chút: tự kinh doanh, hiểu cổ phần và lãi kép, dùng thẻ tín dụng có trách nhiệm, và trở thành công dân tài chính toàn cầu — 4 trụ cột mới, Tập 25–48.</p>
-
-      <div class="pillar">
-        <div class="pillar-head">
-          <span class="badge">5</span>
-          <h3>Kinh doanh nhí <small>Tập 25–30 · Từ ý tưởng đến báo cáo lời lỗ</small></h3>
-        </div>
-        <div class="ep-grid">
-          <a class="ep-item" href="tap-25.html"><span class="lock">🔒</span><span class="num">Tập 25</span><span class="name">Suri có một ý tưởng lớn</span><span class="words">idea · product · customer</span></a>
-          <a class="ep-item" href="tap-26.html"><span class="lock">🔒</span><span class="num">Tập 26</span><span class="name">Vốn khởi nghiệp đến từ đâu?</span><span class="words">capital · funding · partner</span></a>
-          <a class="ep-item" href="tap-27.html"><span class="lock">🔒</span><span class="num">Tập 27</span><span class="name">Định giá sản phẩm sao cho đúng</span><span class="words">markup · break even · retail</span></a>
-          <a class="ep-item" href="tap-28.html"><span class="lock">🔒</span><span class="num">Tập 28</span><span class="name">Thương hiệu nhỏ, ước mơ lớn</span><span class="words">brand · logo · reputation</span></a>
-          <a class="ep-item" href="tap-29.html"><span class="lock">🔒</span><span class="num">Tập 29</span><span class="name">Marketing không tốn tiền</span><span class="words">audience · word of mouth</span></a>
-          <a class="ep-item" href="tap-30.html"><span class="lock">🔒</span><span class="num">Tập 30</span><span class="name">Báo cáo lời lỗ cuối tháng</span><span class="words">revenue · expense · net profit</span></a>
-        </div>
-      </div>
-
-      <div class="pillar">
-        <div class="pillar-head">
-          <span class="badge">6</span>
-          <h3>Đầu tư thông minh <small>Tập 31–36 · Cổ phần, lãi kép và danh mục đầu tư</small></h3>
-        </div>
-        <div class="ep-grid">
-          <a class="ep-item" href="tap-31.html"><span class="lock">🔒</span><span class="num">Tập 31</span><span class="name">Cổ phần là gì?</span><span class="words">stock · shareholder · trade</span></a>
-          <a class="ep-item" href="tap-32.html"><span class="lock">🔒</span><span class="num">Tập 32</span><span class="name">Lãi kép — phép màu của thời gian</span><span class="words">compound interest · principal</span></a>
-          <a class="ep-item" href="tap-33.html"><span class="lock">🔒</span><span class="num">Tập 33</span><span class="name">Chia trứng nhiều giỏ</span><span class="words">portfolio · diversify · balance</span></a>
-          <a class="ep-item" href="tap-34.html"><span class="lock">🔒</span><span class="num">Tập 34</span><span class="name">Cổ tức — tiền được tiền</span><span class="words">dividend · reinvest · yield</span></a>
-          <a class="ep-item" href="tap-35.html"><span class="lock">🔒</span><span class="num">Tập 35</span><span class="name">Thị trường lên xuống</span><span class="words">bull · bear · volatile</span></a>
-          <a class="ep-item" href="tap-36.html"><span class="lock">🔒</span><span class="num">Tập 36</span><span class="name">Đầu tư có trách nhiệm</span><span class="words">research · due diligence</span></a>
-        </div>
-      </div>
-
-      <div class="pillar">
-        <div class="pillar-head">
-          <span class="badge">7</span>
-          <h3>Tín dụng, Thuế &amp; Bảo vệ tài sản <small>Tập 37–42 · Dùng tiền vay và giữ tiền an toàn</small></h3>
-        </div>
-        <div class="ep-grid">
-          <a class="ep-item" href="tap-37.html"><span class="lock">🔒</span><span class="num">Tập 37</span><span class="name">Thẻ tín dụng hoạt động thế nào?</span><span class="words">credit card · limit · statement</span></a>
-          <a class="ep-item" href="tap-38.html"><span class="lock">🔒</span><span class="num">Tập 38</span><span class="name">Điểm tín dụng — uy tín bằng số</span><span class="words">credit score · reliable</span></a>
-          <a class="ep-item" href="tap-39.html"><span class="lock">🔒</span><span class="num">Tập 39</span><span class="name">Bảo hiểm — tấm khiên cho tương lai</span><span class="words">insurance · premium · claim</span></a>
-          <a class="ep-item" href="tap-40.html"><span class="lock">🔒</span><span class="num">Tập 40</span><span class="name">Thuế — đóng góp cho cộng đồng</span><span class="words">tax · income tax · VAT</span></a>
-          <a class="ep-item" href="tap-41.html"><span class="lock">🔒</span><span class="num">Tập 41</span><span class="name">Bảo vệ thông tin tài chính</span><span class="words">password · phishing · secure</span></a>
-          <a class="ep-item" href="tap-42.html"><span class="lock">🔒</span><span class="num">Tập 42</span><span class="name">Khi có tranh chấp tiền bạc</span><span class="words">contract · receipt · warranty</span></a>
-        </div>
-      </div>
-
-      <div class="pillar" style="margin-bottom:20px">
-        <div class="pillar-head">
-          <span class="badge">8</span>
-          <h3>Công dân tài chính toàn cầu <small>Tập 43–48 · Lạm phát, tỷ giá và tự do tài chính</small></h3>
-        </div>
-        <div class="ep-grid">
-          <a class="ep-item" href="tap-43.html"><span class="lock">🔒</span><span class="num">Tập 43</span><span class="name">Lạm phát — vì sao giá tăng theo năm?</span><span class="words">inflation · purchasing power</span></a>
-          <a class="ep-item" href="tap-44.html"><span class="lock">🔒</span><span class="num">Tập 44</span><span class="name">Tỷ giá và chuyến du lịch nước ngoài</span><span class="words">exchange rate · convert</span></a>
-          <a class="ep-item" href="tap-45.html"><span class="lock">🔒</span><span class="num">Tập 45</span><span class="name">Nghề nghiệp tương lai của con</span><span class="words">career · entrepreneur · passion</span></a>
-          <a class="ep-item" href="tap-46.html"><span class="lock">🔒</span><span class="num">Tập 46</span><span class="name">Tự do tài chính là gì?</span><span class="words">financial freedom · net worth</span></a>
-          <a class="ep-item" href="tap-47.html"><span class="lock">🔒</span><span class="num">Tập 47</span><span class="name">Cho đi thông minh</span><span class="words">philanthropy · impact · nonprofit</span></a>
-          <a class="ep-item" href="tap-48.html"><span class="lock">🔒</span><span class="num">Tập 48</span><span class="name">Suri — Giám đốc điều hành tương lai</span><span class="words">vision · leadership · inspire</span></a>
-        </div>
-      </div>
-
-      <div class="season2-cta">
-        <a class="btn btn-coral" href="premium.html">🔓 Mở khóa Mùa 2 với Premium →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PARENTS -->
-<section class="section" id="ba-me">
-  <div class="container">
-    <div class="parents">
-      <div>
-        <span class="eyebrow">👨‍👩‍👧 Cho ba mẹ</span>
-        <h2>Vì sao dạy con về tiền từ 6 tuổi?</h2>
-        <ul>
-          <li>Thói quen tiền bạc của trẻ hình thành rất sớm — càng bắt đầu sớm, con càng tự tin với tiền khi lớn.</li>
-          <li>Nội dung bám khung OECD/INFE — chuẩn quốc tế về năng lực tài chính cho trẻ em.</li>
-          <li>Học kèm 6 từ vựng tiếng Anh mỗi tập — một video, hai kỹ năng.</li>
-          <li>Ba mẹ xem cùng con: cuối mỗi tập có câu hỏi để cả nhà thảo luận.</li>
-        </ul>
-        <a class="btn btn-coral" href="cho-ba-me.html">Đọc hướng dẫn cho ba mẹ →</a>
-      </div>
-      <div class="big-pig" aria-hidden="true">🐷💛</div>
-    </div>
-  </div>
-</section>
-
-<!-- PREMIUM CTA -->
-<section class="section">
-  <div class="container">
-    <div class="journey" style="text-align:center">
-      <span class="eyebrow">🔓 Dành cho ba mẹ muốn đồng hành sâu hơn</span>
-      <h2 style="margin-bottom:10px">Thành viên Premium Heo Vàng</h2>
-      <p class="sub" style="margin:0 auto 24px">24 tập gốc vẫn miễn phí mãi mãi. Premium mở khóa trọn Mùa 2 — 24 bài học nâng cao (Tập 25–48), cộng thêm workbook in được, bản offline và chứng nhận Giám đốc nhí — từ 149.000đ.</p>
-      <a class="btn btn-coral" href="premium.html">Xem chi tiết Premium →</a>
+    <div>
+      <span class="premium-badge">🔓 Dành cho ba mẹ muốn đồng hành sâu hơn</span>
+      <h2 class="sec-h2" style="margin-bottom:16px">Thành viên Premium Heo Vàng</h2>
+      <p style="font-size:.97rem;line-height:1.6;color:rgba(46,58,42,.75);margin:0 0 22px;max-width:32rem">24 tập gốc vẫn miễn phí mãi mãi. Premium mở khóa trọn Mùa 2 — 24 bài học nâng cao, cộng thêm workbook in được, bản offline và chứng nhận Giám đốc nhí.</p>
+      <div class="premium-price">Từ 149.000đ</div>
+      <button class="btn btn-gold" id="btnPremiumCard">Xem chi tiết Premium →</button>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section">
-  <div class="container" style="max-width:760px">
-    <span class="eyebrow">Câu hỏi thường gặp</span>
-    <h2 style="margin-bottom:24px">Ba mẹ hay hỏi</h2>
-    <details>
-      <summary>Heo Vàng dành cho trẻ mấy tuổi?</summary>
-      <p>Nội dung được thiết kế cho trẻ 6–12 tuổi, đi từ dễ (tiền là gì) đến nâng cao dần (đầu tư, rủi ro, lừa đảo).</p>
-    </details>
-    <details>
-      <summary>Heo Vàng có miễn phí không?</summary>
-      <p>24 tập gốc (Mùa 1) và toàn bộ bài học trên web đều miễn phí mãi mãi, không giới hạn. Mùa 2 — 24 bài học nâng cao (Tập 25–48) dành cho thành viên Premium, xem chi tiết ở trang <a href="premium.html">Premium</a>.</p>
-    </details>
-    <details>
-      <summary>Chương trình dựa trên khung nào?</summary>
-      <p>Nội dung bám theo khung năng lực tài chính OECD/INFE cho trẻ em, gồm 4 trụ cột: Tiền &amp; Giao dịch, Tiết kiệm &amp; Kế hoạch, Rủi ro &amp; Đầu tư, Thế giới tài chính.</p>
-    </details>
-    <details>
-      <summary>Trẻ có học được tiếng Anh không?</summary>
-      <p>Có. Mỗi tập dạy 6 từ vựng tiếng Anh về tiền bạc kèm phiên âm IPA, lồng tự nhiên vào câu chuyện của 2 ba con.</p>
-    </details>
-  </div>
+<section class="section container" id="faq" style="max-width:900px">
+  <span class="eyebrow muted">Câu hỏi thường gặp</span>
+  <h2 class="sec-h2">Ba mẹ hay hỏi</h2>
+  <div class="faq-list" id="faqList"></div>
 </section>
 
 </main>
 
 <footer>
-  <div class="container">
+  <div class="foot-inner">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="index.html"><span class="pig">🐷</span>Heo Vàng</a>
-        <p style="max-width:280px;margin-top:10px;font-size:.9rem">Dạy con về tiền qua video 2 ba con — song ngữ Việt–Anh, theo khung OECD/INFE.</p>
+        <div class="foot-logo"><span class="badge">🐷</span><span>Heo Vàng</span></div>
+        <p class="foot-desc">Dạy con về tiền qua video 2 ba con — song ngữ Việt–Anh, theo khung OECD/INFE.</p>
       </div>
-      <ul>
-        <li><b style="color:var(--cream)">Nội dung</b></li>
-        <li><a href="#bai-hoc">24 bài học</a></li>
-      <li><a href="tudien.html">Từ điển</a></li>
-        <li><a href="hoi-heo.html">Hỏi chú Heo</a></li>
-        <li><a href="cho-ba-me.html">Cho ba mẹ</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-      <ul>
-        <li><b style="color:var(--cream)">Kết nối</b></li>
-        <li><a href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">YouTube</a></li>
-        <li><a href="https://www.facebook.com/PAGE_FACEBOOK" rel="noopener" style="opacity:.5;cursor:default" title="Sắp cập nhật" onclick="return false">Facebook <span style="font-size:.75rem">(sắp có)</span></a></li>
-        <li><a href="https://www.tiktok.com/@TIKTOK_HANDLE" rel="noopener" style="opacity:.5;cursor:default" title="Sắp cập nhật" onclick="return false">TikTok <span style="font-size:.75rem">(sắp có)</span></a></li>
-        <li><a href="mailto:thanhmercedeshaxaco@gmail.com">Liên hệ</a></li>
-      </ul>
-      <ul>
-        <li><b style="color:var(--cream)">Khác</b></li>
-        <li><a href="cap-nhat.html">📋 Nhật ký cập nhật</a></li>
-        <li><a href="gop-y.html">💬 Gửi góp ý</a></li>
-        <li><a href="premium.html">🔓 Premium</a></li>
-      </ul>
+      <div>
+        <div class="foot-col-title">Nội dung</div>
+        <ul class="foot-links">
+          <li><a href="#bai-hoc">24 bài học</a></li>
+          <li><a href="tudien.html">Từ điển</a></li>
+          <li><a href="hoi-heo.html">Hỏi chú Heo</a></li>
+          <li><a href="cho-ba-me.html">Cho ba mẹ</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-col-title">Kết nối</div>
+        <ul class="foot-links">
+          <li><a href="https://www.youtube.com/@KENH_YOUTUBE" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.facebook.com/PAGE_FACEBOOK" rel="noopener" style="opacity:.5" title="Sắp cập nhật" onclick="return false">Facebook (sắp có)</a></li>
+          <li><a href="https://www.tiktok.com/@TIKTOK_HANDLE" rel="noopener" style="opacity:.5" title="Sắp cập nhật" onclick="return false">TikTok (sắp có)</a></li>
+          <li><a href="mailto:thanhmercedeshaxaco@gmail.com">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-col-title">Khác</div>
+        <ul class="foot-links">
+          <li><a href="cap-nhat.html">📋 Nhật ký cập nhật</a></li>
+          <li><a href="gop-y.html">💬 Gửi góp ý</a></li>
+          <li><a href="premium.html">🔓 Premium</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="legal">
-      Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · Không quảng cáo · Không tiền thật<br>
-      © 2026 Heo Vàng
-    </div>
+    <div class="foot-legal">Nội dung mang tính giáo dục, không phải lời khuyên đầu tư · Không quảng cáo · Không tiền thật · © 2026 Heo Vàng</div>
   </div>
 </footer>
+
+<!-- PREMIUM MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <button class="close" id="closeModal" aria-label="Đóng">✕</button>
+    <div class="emoji">🔓🐷</div>
+    <h3>Mở khóa Mùa 2</h3>
+    <p>24 bài học nâng cao, workbook in được, bản offline và chứng nhận Giám đốc nhí — từ <strong>149.000đ</strong>.</p>
+    <a class="btn btn-gold" href="premium.html">Xem các gói Premium →</a>
+  </div>
+</div>
+
+<script>
+(function(){
+
+var season1 = [
+  {id:1, emoji:'🪙', title:'Tiền & Giao dịch', range:'Tập 1–6', desc:'Hiểu tiền là gì và cách dùng tiền', lessons:[
+    {num:1,title:'Tiền là gì?',vocab:'money · coin · bill · buy · sell · price',href:'tap-01.html'},
+    {num:2,title:'Tiền đến từ đâu?',vocab:'work · earn · salary · job',href:'tap-02.html'},
+    {num:3,title:'Đi chợ cùng ba',vocab:'market · pay · change · cheap · expensive',href:'tap-03.html'},
+    {num:4,title:'Tiền giấy & tiền trong điện thoại',vocab:'cash · card · bank · transfer',href:'tap-04.html'},
+    {num:5,title:'Đắt hay rẻ? So sánh giá',vocab:'compare · cost · value',href:'tap-05.html'},
+    {num:6,title:'Mua thứ cần, không mua thứ thích',vocab:'need · want · choose',href:'tap-06.html'}]},
+  {id:2, emoji:'🐷', title:'Tiết kiệm & Kế hoạch', range:'Tập 7–12', desc:'Heo đất và mục tiêu đầu tiên', lessons:[
+    {num:7,title:'Chú heo đất đầu tiên',vocab:'save · piggy bank · goal',href:'tap-07.html'},
+    {num:8,title:'Để dành mua món đồ mơ ước',vocab:'wish · plan · wait',href:'tap-08.html'},
+    {num:9,title:'Tiền tiêu vặt của Suri',vocab:'allowance · weekly · spend',href:'tap-09.html'},
+    {num:10,title:'Chia tiền 3 hũ',vocab:'jar · share · give',href:'tap-10.html'},
+    {num:11,title:'Kiên nhẫn = phần thưởng lớn hơn',vocab:'patient · reward · later',href:'tap-11.html'},
+    {num:12,title:'Suri đạt mục tiêu đầu tiên',vocab:'achieve · proud · count',href:'tap-12.html'}]},
+  {id:3, emoji:'🌱', title:'Rủi ro & Đầu tư', range:'Tập 13–18', desc:'Tiền đẻ ra tiền, và cách tự bảo vệ', lessons:[
+    {num:13,title:'Gửi ngân hàng — tiền đẻ ra tiền',vocab:'deposit · interest · grow',href:'tap-13.html'},
+    {num:14,title:'Trồng cây tiền: đầu tư là gì?',vocab:'invest · seed · harvest',href:'tap-14.html'},
+    {num:15,title:'Không bỏ trứng vào một giỏ',vocab:'basket · risk · safe',href:'tap-15.html'},
+    {num:16,title:'Lời và lỗ',vocab:'profit · loss · win · lose',href:'tap-16.html'},
+    {num:17,title:'Cẩn thận lừa đảo!',vocab:'scam · stranger · protect',href:'tap-17.html'},
+    {num:18,title:'Suri mở "cửa hàng" đầu tiên',vocab:'shop · customer · service',href:'tap-18.html'}]},
+  {id:4, emoji:'🏦', title:'Thế giới tài chính', range:'Tập 19–24', desc:'Ngân hàng, vay mượn, quảng cáo và cho đi', lessons:[
+    {num:19,title:'Ngân hàng hoạt động thế nào?',vocab:'bank · borrow · lend',href:'tap-19.html'},
+    {num:20,title:'Vay mượn phải trả',vocab:'loan · debt · promise',href:'tap-20.html'},
+    {num:21,title:'Quảng cáo muốn gì ở con?',vocab:'ad · trick · smart',href:'tap-21.html'},
+    {num:22,title:'Tiền của các nước',vocab:'dollar · currency · exchange',href:'tap-22.html'},
+    {num:23,title:'Cho đi — tiền làm việc tốt',vocab:'charity · help · kind',href:'tap-23.html'},
+    {num:24,title:'Suri — giám đốc nhí',vocab:'dream · future · plan',href:'tap-24.html'}]}
+];
+
+var season2 = [
+  {id:5, emoji:'💼', title:'Kinh doanh nhí', range:'Tập 25–30', desc:'Từ ý tưởng đến báo cáo lời lỗ', lessons:[
+    {num:25,title:'Suri có một ý tưởng lớn',href:'tap-25.html'},{num:26,title:'Vốn khởi nghiệp đến từ đâu?',href:'tap-26.html'},{num:27,title:'Định giá sản phẩm sao cho đúng',href:'tap-27.html'},{num:28,title:'Thương hiệu nhỏ, ước mơ lớn',href:'tap-28.html'},{num:29,title:'Marketing không tốn tiền',href:'tap-29.html'},{num:30,title:'Báo cáo lời lỗ cuối tháng',href:'tap-30.html'}]},
+  {id:6, emoji:'📈', title:'Đầu tư thông minh', range:'Tập 31–36', desc:'Cổ phần, lãi kép và danh mục đầu tư', lessons:[
+    {num:31,title:'Cổ phần là gì?',href:'tap-31.html'},{num:32,title:'Lãi kép — phép màu của thời gian',href:'tap-32.html'},{num:33,title:'Chia trứng nhiều giỏ',href:'tap-33.html'},{num:34,title:'Cổ tức — tiền được tiền',href:'tap-34.html'},{num:35,title:'Thị trường lên xuống',href:'tap-35.html'},{num:36,title:'Đầu tư có trách nhiệm',href:'tap-36.html'}]},
+  {id:7, emoji:'💳', title:'Tín dụng, Thuế & Bảo vệ tài sản', range:'Tập 37–42', desc:'Dùng tiền vay và giữ tiền an toàn', lessons:[
+    {num:37,title:'Thẻ tín dụng hoạt động thế nào?',href:'tap-37.html'},{num:38,title:'Điểm tín dụng — uy tín bằng số',href:'tap-38.html'},{num:39,title:'Bảo hiểm — tấm khiên cho tương lai',href:'tap-39.html'},{num:40,title:'Thuế — đóng góp cho cộng đồng',href:'tap-40.html'},{num:41,title:'Bảo vệ thông tin tài chính',href:'tap-41.html'},{num:42,title:'Khi có tranh chấp tiền bạc',href:'tap-42.html'}]},
+  {id:8, emoji:'🌍', title:'Công dân tài chính toàn cầu', range:'Tập 43–48', desc:'Lạm phát, tỷ giá và tự do tài chính', lessons:[
+    {num:43,title:'Lạm phát — vì sao giá tăng theo năm?',href:'tap-43.html'},{num:44,title:'Tỷ giá và chuyến du lịch nước ngoài',href:'tap-44.html'},{num:45,title:'Nghề nghiệp tương lai của con',href:'tap-45.html'},{num:46,title:'Tự do tài chính là gì?',href:'tap-46.html'},{num:47,title:'Cho đi thông minh',href:'tap-47.html'},{num:48,title:'Suri — Giám đốc điều hành tương lai',href:'tap-48.html'}]}
+];
+
+var vocab = [
+  {key:'money', word:'money', ipa:'/ˈmʌni/', meaning:'tiền'},
+  {key:'coin', word:'coin', ipa:'/kɔɪn/', meaning:'tiền xu'},
+  {key:'bill', word:'bill', ipa:'/bɪl/', meaning:'tiền giấy'},
+  {key:'buy', word:'buy', ipa:'/baɪ/', meaning:'mua'},
+  {key:'sell', word:'sell', ipa:'/sel/', meaning:'bán'},
+  {key:'price', word:'price', ipa:'/praɪs/', meaning:'giá'}
+];
+
+var faqs = [
+  {q:'Heo Vàng dành cho trẻ mấy tuổi?', a:'Nội dung được thiết kế cho trẻ 6–12 tuổi, đi từ dễ (tiền là gì) đến nâng cao dần (đầu tư, rủi ro, lừa đảo).'},
+  {q:'Heo Vàng có miễn phí không?', a:'24 tập gốc (Mùa 1) và toàn bộ bài học trên web đều miễn phí mãi mãi. Mùa 2 — 24 bài học nâng cao dành cho thành viên Premium.'},
+  {q:'Chương trình dựa trên khung nào?', a:'Nội dung bám theo khung năng lực tài chính OECD/INFE cho trẻ em: Tiền & Giao dịch, Tiết kiệm & Kế hoạch, Rủi ro & Đầu tư, Thế giới tài chính.'},
+  {q:'Trẻ có học được tiếng Anh không?', a:'Có. Mỗi tập dạy 6 từ vựng tiếng Anh về tiền bạc kèm phiên âm IPA, lồng tự nhiên vào câu chuyện của 2 ba con.'}
+];
+
+var journey = [
+  {emoji:'🪙',label:'Tiền & Giao dịch',range:'Tập 1–6',pillar:1},
+  {emoji:'🐷',label:'Tiết kiệm & Kế hoạch',range:'Tập 7–12',pillar:2},
+  {emoji:'🌱',label:'Rủi ro & Đầu tư',range:'Tập 13–18',pillar:3},
+  {emoji:'🏦',label:'Thế giới tài chính',range:'Tập 19–24',pillar:4},
+  {emoji:'🚲',label:'Đạt ước mơ!',range:'Tập 24',pillar:4}
+];
+
+var state = { season: 1, openPillar: 1, openFaq: 0 };
+
+/* ---- flip cards ---- */
+var flipGrid = document.getElementById('flipGrid');
+vocab.forEach(function(v){
+  var card = document.createElement('div');
+  card.className = 'flip-card';
+  card.setAttribute('tabindex','0');
+  card.setAttribute('role','button');
+  card.setAttribute('aria-label','Lật thẻ từ ' + v.word);
+  card.innerHTML =
+    '<div class="flip-inner">' +
+      '<div class="flip-face flip-front"><div class="w">' + v.word + '</div><div class="ipa">' + v.ipa + '</div></div>' +
+      '<div class="flip-face flip-back">' + v.meaning + '</div>' +
+    '</div>';
+  function toggle(){ card.classList.toggle('flipped'); }
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  flipGrid.appendChild(card);
+});
+
+/* ---- journey stages ---- */
+var journeyRow = document.getElementById('journeyRow');
+journey.forEach(function(j){
+  var a = document.createElement('button');
+  a.className = 'journey-stage';
+  a.innerHTML = '<span class="dot" aria-hidden="true">' + j.emoji + '</span><div class="lbl">' + j.label + '</div><div class="rng">' + j.range + '</div>';
+  a.addEventListener('click', function(){
+    state.season = 1;
+    state.openPillar = j.pillar;
+    renderSeasonTabs(); renderPillars();
+    document.getElementById('bai-hoc').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  journeyRow.appendChild(a);
+});
+
+/* ---- season tabs ---- */
+var seasonTabsEl = document.getElementById('seasonTabs');
+function renderSeasonTabs(){
+  seasonTabsEl.innerHTML = '';
+  [1,2].forEach(function(n){
+    var b = document.createElement('button');
+    b.className = 'tab-btn' + (state.season===n ? ' active' : '');
+    b.textContent = n===1 ? 'Mùa 1 · Miễn phí' : 'Mùa 2 · Premium 🔒';
+    b.addEventListener('click', function(){
+      state.season = n;
+      state.openPillar = n===1 ? 1 : 5;
+      renderSeasonTabs(); renderBanner(); renderPillars();
+    });
+    seasonTabsEl.appendChild(b);
+  });
+}
+
+/* ---- premium banner (season2 only) ---- */
+var bannerEl = document.getElementById('premiumBanner');
+function renderBanner(){
+  bannerEl.innerHTML = '';
+  if(state.season !== 2) return;
+  var div = document.createElement('div');
+  div.className = 'premium-banner';
+  div.innerHTML =
+    '<div><div class="t1">🔒 Mùa 2 · Dành cho thành viên Premium</div>' +
+    '<div class="t2">24 tập gốc luôn miễn phí mãi mãi. Mùa 2 đưa Suri lớn hơn một chút: kinh doanh nhí, cổ phần, lãi kép, thẻ tín dụng và trở thành công dân tài chính toàn cầu.</div></div>' +
+    '<button class="btn btn-gold-sm" type="button">🔓 Mở khóa Mùa 2</button>';
+  div.querySelector('button').addEventListener('click', openModal);
+  bannerEl.appendChild(div);
+}
+
+/* ---- pillars accordion + lesson grid ---- */
+var pillarListEl = document.getElementById('pillarList');
+function renderPillars(){
+  pillarListEl.innerHTML = '';
+  var data = state.season === 1 ? season1 : season2;
+  data.forEach(function(p){
+    var wrap = document.createElement('div');
+    wrap.className = 'pillar' + (state.openPillar === p.id ? ' open' : '');
+
+    var head = document.createElement('button');
+    head.className = 'pillar-head';
+    head.type = 'button';
+    head.setAttribute('aria-expanded', state.openPillar === p.id ? 'true' : 'false');
+    head.innerHTML =
+      '<span class="ico" aria-hidden="true">' + p.emoji + '</span>' +
+      '<span class="info"><span class="title">' + p.title + '</span><span class="desc">' + p.range + ' · ' + p.desc + '</span></span>' +
+      '<span class="chev">▾</span>';
+    head.addEventListener('click', function(){
+      state.openPillar = state.openPillar === p.id ? null : p.id;
+      renderPillars();
+    });
+    wrap.appendChild(head);
+
+    var body = document.createElement('div');
+    body.className = 'pillar-body';
+    p.lessons.forEach(function(l){
+      var locked = state.season === 2;
+      var el = document.createElement(locked ? 'button' : 'a');
+      el.className = 'lesson-card' + (locked ? ' locked' : '');
+      if(!locked){ el.href = l.href; }
+      else { el.type = 'button'; }
+      el.innerHTML =
+        '<div class="top"><span class="num">Tập ' + l.num + '</span>' + (locked ? '<span aria-hidden="true">🔒</span>' : '') + '</div>' +
+        '<div class="name">' + l.title + '</div>' +
+        '<div class="words">' + (locked ? 'Mở khóa để xem từ vựng' : (l.vocab||'')) + '</div>';
+      if(locked){ el.addEventListener('click', openModal); }
+      body.appendChild(el);
+    });
+    wrap.appendChild(body);
+    pillarListEl.appendChild(wrap);
+  });
+}
+
+/* ---- FAQ ---- */
+var faqListEl = document.getElementById('faqList');
+function renderFaq(){
+  faqListEl.innerHTML = '';
+  faqs.forEach(function(f, i){
+    var item = document.createElement('div');
+    item.className = 'faq-item' + (state.openFaq === i ? ' open' : '');
+    var q = document.createElement('button');
+    q.className = 'faq-q'; q.type = 'button';
+    q.setAttribute('aria-expanded', state.openFaq === i ? 'true' : 'false');
+    q.innerHTML = '<span>' + f.q + '</span><span class="faq-chev">▾</span>';
+    q.addEventListener('click', function(){
+      state.openFaq = state.openFaq === i ? null : i;
+      renderFaq();
+    });
+    var a = document.createElement('div');
+    a.className = 'faq-a';
+    a.textContent = f.a;
+    item.appendChild(q); item.appendChild(a);
+    faqListEl.appendChild(item);
+  });
+}
+
+/* ---- modal ---- */
+var overlay = document.getElementById('overlay');
+function openModal(){ overlay.classList.add('show'); }
+function closeModal(){ overlay.classList.remove('show'); }
+document.getElementById('closeModal').addEventListener('click', closeModal);
+document.getElementById('btnPremiumCard').addEventListener('click', openModal);
+overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+renderSeasonTabs();
+renderBanner();
+renderPillars();
+renderFaq();
+
+})();
+</script>
 
 </body>
 </html>

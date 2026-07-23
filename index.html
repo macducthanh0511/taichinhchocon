@@ -232,17 +232,20 @@
 <header>
   <div class="nav">
     <a class="logo" href="#top">
-      <span class="badge">🐷</span>
+      <span class="badge"><img src="icon-192.png" alt="Heo Vàng" width="32" height="32"></span>
       <span class="name">Heo Vàng</span>
     </a>
     <ul class="nav-links">
       <li><a href="#tap-moi">Tập mới</a></li>
       <li><a href="#hanh-trinh">Hành trình</a></li>
-      <li><a href="#bai-hoc">24 bài học</a></li>
+      <li><a href="#bai-hoc">60 bài học</a></li>
       <li><a href="#ba-me">Cho ba mẹ</a></li>
       <li><a href="#faq">Hỏi đáp</a></li>
     </ul>
-    <a class="btn-premium" href="premium.html">🔓 Premium</a>
+    <div class="nav-actions">
+      <button class="btn-install" id="btnInstall" type="button" hidden>📲 <span class="lbl">Cài đặt app</span></button>
+      <a class="btn-premium" href="premium.html">🔓 Premium</a>
+    </div>
   </div>
 </header>
 
@@ -257,7 +260,7 @@
       <p class="lead">60 tập hoạt hình theo khung OECD/INFE — Suri học kiếm, tiêu, tiết kiệm, đầu tư và cả kinh doanh cùng ba Thanh. Mỗi tập kèm 6 từ vựng tiếng Anh, video mới mỗi tuần.</p>
       <div class="hero-cta">
         <a class="btn btn-gold" href="#tap-moi">▶ Xem Tập 1 miễn phí</a>
-        <a class="btn btn-outline" href="#bai-hoc">Xem 24 bài học</a>
+        <a class="btn btn-outline" href="#bai-hoc">Xem 60 bài học</a>
       </div>
       <div class="trust">
         <span>🚫 Không quảng cáo</span>
@@ -366,7 +369,7 @@
   <div class="foot-inner">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo"><span class="badge">🐷</span><span>Heo Vàng</span></div>
+        <div class="foot-logo"><span class="badge"><img src="icon-192.png" alt="Heo Vàng" width="26" height="26"></span><span>Heo Vàng</span></div>
         <p class="foot-desc">Dạy con về tiền qua video 2 ba con — song ngữ Việt–Anh, theo khung OECD/INFE.</p>
       </div>
       <div>
@@ -409,6 +412,17 @@
     <h3>Mở khóa Mùa 2</h3>
     <p>24 bài học nâng cao, workbook in được, bản offline và chứng nhận Giám đốc nhí — từ <strong>149.000đ</strong>.</p>
     <a class="btn btn-gold" href="premium.html">Xem các gói Premium →</a>
+  </div>
+</div>
+
+<!-- INSTALL APP MODAL (iOS instructions) -->
+<div class="overlay" id="installOverlay">
+  <div class="modal">
+    <button class="close" id="closeInstallModal" aria-label="Đóng">✕</button>
+    <div class="emoji">📲🐷</div>
+    <h3>Cài Heo Vàng vào màn hình chính</h3>
+    <p>Trên iPhone/iPad (Safari): bấm nút <strong>Chia sẻ</strong> <span aria-hidden="true">⬆️</span> ở thanh dưới, sau đó chọn <strong>"Thêm vào Màn hình chính"</strong> (Add to Home Screen).</p>
+    <p style="margin-bottom:0">Trên Android (Chrome): bấm nút này lần nữa, hoặc chọn <strong>⋮ → Cài đặt ứng dụng</strong> ở góc trên bên phải trình duyệt.</p>
   </div>
 </div>
 
@@ -635,6 +649,46 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js').catch(function () {});
   });
 }
+
+/* ---- Install app button ---- */
+(function(){
+  var btn = document.getElementById('btnInstall');
+  var installOverlay = document.getElementById('installOverlay');
+  var closeInstallModal = document.getElementById('closeInstallModal');
+  var deferredPrompt = null;
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  function showInstallModal(){ installOverlay.classList.add('show'); }
+  function hideInstallModal(){ installOverlay.classList.remove('show'); }
+  closeInstallModal.addEventListener('click', hideInstallModal);
+  installOverlay.addEventListener('click', function(e){ if(e.target === installOverlay) hideInstallModal(); });
+
+  if (!isStandalone) {
+    var isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+    if (isIOS) {
+      // iOS never fires beforeinstallprompt — show button, always open instructions
+      btn.hidden = false;
+      btn.addEventListener('click', showInstallModal);
+    }
+  }
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!isStandalone) btn.hidden = false;
+  });
+
+  btn.addEventListener('click', function(){
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(function(){ deferredPrompt = null; });
+    } else if (!/iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase())) {
+      showInstallModal();
+    }
+  });
+
+  window.addEventListener('appinstalled', function(){ btn.hidden = true; });
+})();
 </script>
 
 </body>

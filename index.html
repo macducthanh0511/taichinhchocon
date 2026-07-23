@@ -62,13 +62,13 @@
     },
     {
       "@type": "Course",
-      "name": "Heo Vàng — Mùa 2: Nâng cao (24 tập Premium)",
-      "description": "24 bài học nâng cao (Tập 25–48) dành cho thành viên Premium: kinh doanh nhí, cổ phần và lãi kép, tín dụng và thuế, tài chính toàn cầu.",
+      "name": "Heo Vàng — Mùa 2: Nâng cao (24 tập)",
+      "description": "24 bài học nâng cao (Tập 25–48): kinh doanh nhí, cổ phần và lãi kép, tín dụng và thuế, tài chính toàn cầu. Đang mở miễn phí cho tất cả trong giai đoạn dùng thử.",
       "provider": {"@id": "https://taichinhchocon.vn/#org"},
-      "isAccessibleForFree": false,
+      "isAccessibleForFree": true,
       "inLanguage": ["vi", "en"],
       "educationalLevel": "Tiểu học nâng cao",
-      "url": "https://taichinhchocon.vn/premium.html"
+      "url": "https://taichinhchocon.vn/index.html#bai-hoc"
     },
     {
       "@type": "FAQPage",
@@ -81,7 +81,7 @@
         {
           "@type": "Question",
           "name": "Heo Vàng có miễn phí không?",
-          "acceptedAnswer": {"@type": "Answer", "text": "24 tập gốc (Mùa 1) và bài học trên web đều miễn phí mãi mãi. Mùa 2 — 24 bài học nâng cao (Tập 25–48) dành cho thành viên Premium."}
+          "acceptedAnswer": {"@type": "Answer", "text": "24 tập gốc (Mùa 1) và bài học trên web đều miễn phí mãi mãi. Mùa 2 — 24 bài học nâng cao (Tập 25–48) hiện đang mở miễn phí cho tất cả trong giai đoạn dùng thử."}
         },
         {
           "@type": "Question",
@@ -338,7 +338,7 @@
     <div>
       <span class="premium-badge">🔓 Dành cho ba mẹ muốn đồng hành sâu hơn</span>
       <h2 class="sec-h2" style="margin-bottom:16px">Thành viên Premium Heo Vàng</h2>
-      <p style="font-size:.97rem;line-height:1.6;color:rgba(46,58,42,.75);margin:0 0 22px;max-width:32rem">24 tập gốc vẫn miễn phí mãi mãi. Premium mở khóa trọn Mùa 2 — 24 bài học nâng cao, cộng thêm workbook in được, bản offline và chứng nhận Giám đốc nhí.</p>
+      <p style="font-size:.97rem;line-height:1.6;color:rgba(46,58,42,.75);margin:0 0 22px;max-width:32rem">Cả 48 tập (Mùa 1 + Mùa 2) hiện đang mở miễn phí cho tất cả. Premium là phần bổ trợ cho ba mẹ muốn đồng hành sâu hơn: workbook in được, bản offline và chứng nhận Giám đốc nhí cho bé.</p>
       <div class="premium-price">Từ 149.000đ</div>
       <button class="btn btn-gold" id="btnPremiumCard">Xem chi tiết Premium →</button>
     </div>
@@ -440,13 +440,13 @@ var season1 = [
 
 var season2 = [
   {id:5, emoji:'💼', title:'Kinh doanh nhí', range:'Tập 25–30', desc:'Từ ý tưởng đến báo cáo lời lỗ', lessons:[
-    {num:25,title:'Suri có một ý tưởng lớn',href:'tap-25.html'},{num:26,title:'Vốn khởi nghiệp đến từ đâu?',href:'tap-26.html'},{num:27,title:'Định giá sản phẩm sao cho đúng',href:'tap-27.html'},{num:28,title:'Thương hiệu nhỏ, ước mơ lớn',href:'tap-28.html'},{num:29,title:'Marketing không tốn tiền',href:'tap-29.html'},{num:30,title:'Báo cáo lời lỗ cuối tháng',href:'tap-30.html'}]},
+    {num:25,title:'Suri có một ý tưởng lớn',href:'tap-25.html',vocab:'idea · opportunity · product'},{num:26,title:'Vốn khởi nghiệp đến từ đâu?',href:'tap-26.html',vocab:'capital · startup cost · funding'},{num:27,title:'Định giá sản phẩm sao cho đúng',href:'tap-27.html',vocab:'cost price · markup · break even'},{num:28,title:'Thương hiệu nhỏ, ước mơ lớn',href:'tap-28.html',vocab:'brand · logo · reputation'},{num:29,title:'Marketing không tốn tiền',href:'tap-29.html',vocab:'marketing · audience · word of mouth'},{num:30,title:'Báo cáo lời lỗ cuối tháng',href:'tap-30.html',vocab:'revenue · expense · net profit'}]},
   {id:6, emoji:'📈', title:'Đầu tư thông minh', range:'Tập 31–36', desc:'Cổ phần, lãi kép và danh mục đầu tư', lessons:[
-    {num:31,title:'Cổ phần là gì?',href:'tap-31.html'},{num:32,title:'Lãi kép — phép màu của thời gian',href:'tap-32.html'},{num:33,title:'Chia trứng nhiều giỏ',href:'tap-33.html'},{num:34,title:'Cổ tức — tiền được tiền',href:'tap-34.html'},{num:35,title:'Thị trường lên xuống',href:'tap-35.html'},{num:36,title:'Đầu tư có trách nhiệm',href:'tap-36.html'}]},
+    {num:31,title:'Cổ phần là gì?',href:'tap-31.html',vocab:'stock (share) · shareholder · ownership'},{num:32,title:'Lãi kép — phép màu của thời gian',href:'tap-32.html',vocab:'compound interest · principal · accumulate'},{num:33,title:'Chia trứng nhiều giỏ',href:'tap-33.html',vocab:'portfolio · diversify · allocate'},{num:34,title:'Cổ tức — tiền được tiền',href:'tap-34.html',vocab:'dividend · payout · reinvest'},{num:35,title:'Thị trường lên xuống',href:'tap-35.html',vocab:'bull market · bear market · volatile'},{num:36,title:'Đầu tư có trách nhiệm',href:'tap-36.html',vocab:'research · due diligence · sustainable'}]},
   {id:7, emoji:'💳', title:'Tín dụng, Thuế & Bảo vệ tài sản', range:'Tập 37–42', desc:'Dùng tiền vay và giữ tiền an toàn', lessons:[
-    {num:37,title:'Thẻ tín dụng hoạt động thế nào?',href:'tap-37.html'},{num:38,title:'Điểm tín dụng — uy tín bằng số',href:'tap-38.html'},{num:39,title:'Bảo hiểm — tấm khiên cho tương lai',href:'tap-39.html'},{num:40,title:'Thuế — đóng góp cho cộng đồng',href:'tap-40.html'},{num:41,title:'Bảo vệ thông tin tài chính',href:'tap-41.html'},{num:42,title:'Khi có tranh chấp tiền bạc',href:'tap-42.html'}]},
+    {num:37,title:'Thẻ tín dụng hoạt động thế nào?',href:'tap-37.html',vocab:'credit card · credit limit · statement'},{num:38,title:'Điểm tín dụng — uy tín bằng số',href:'tap-38.html',vocab:'credit score · credit history · record'},{num:39,title:'Bảo hiểm — tấm khiên cho tương lai',href:'tap-39.html',vocab:'insurance · premium · policy'},{num:40,title:'Thuế — đóng góp cho cộng đồng',href:'tap-40.html',vocab:'tax · income tax · VAT'},{num:41,title:'Bảo vệ thông tin tài chính',href:'tap-41.html',vocab:'password · two-factor authentication · phishing'},{num:42,title:'Khi có tranh chấp tiền bạc',href:'tap-42.html',vocab:'contract · agreement · receipt'}]},
   {id:8, emoji:'🌍', title:'Công dân tài chính toàn cầu', range:'Tập 43–48', desc:'Lạm phát, tỷ giá và tự do tài chính', lessons:[
-    {num:43,title:'Lạm phát — vì sao giá tăng theo năm?',href:'tap-43.html'},{num:44,title:'Tỷ giá và chuyến du lịch nước ngoài',href:'tap-44.html'},{num:45,title:'Nghề nghiệp tương lai của con',href:'tap-45.html'},{num:46,title:'Tự do tài chính là gì?',href:'tap-46.html'},{num:47,title:'Cho đi thông minh',href:'tap-47.html'},{num:48,title:'Suri — Giám đốc điều hành tương lai',href:'tap-48.html'}]}
+    {num:43,title:'Lạm phát — vì sao giá tăng theo năm?',href:'tap-43.html',vocab:'inflation · purchasing power · rise'},{num:44,title:'Tỷ giá và chuyến du lịch nước ngoài',href:'tap-44.html',vocab:'exchange rate · foreign currency · convert'},{num:45,title:'Nghề nghiệp tương lai của con',href:'tap-45.html',vocab:'career · skill · freelance'},{num:46,title:'Tự do tài chính là gì?',href:'tap-46.html',vocab:'financial freedom · passive income · independence'},{num:47,title:'Cho đi thông minh',href:'tap-47.html',vocab:'philanthropy · donation · impact'},{num:48,title:'Suri — Giám đốc điều hành tương lai',href:'tap-48.html',vocab:'CEO · vision · leadership'}]}
 ];
 
 var vocab = [
@@ -460,7 +460,7 @@ var vocab = [
 
 var faqs = [
   {q:'Heo Vàng dành cho trẻ mấy tuổi?', a:'Nội dung được thiết kế cho trẻ 6–12 tuổi, đi từ dễ (tiền là gì) đến nâng cao dần (đầu tư, rủi ro, lừa đảo).'},
-  {q:'Heo Vàng có miễn phí không?', a:'24 tập gốc (Mùa 1) và toàn bộ bài học trên web đều miễn phí mãi mãi. Mùa 2 — 24 bài học nâng cao dành cho thành viên Premium.'},
+  {q:'Heo Vàng có miễn phí không?', a:'24 tập gốc (Mùa 1) và toàn bộ bài học trên web đều miễn phí mãi mãi. Mùa 2 — 24 bài học nâng cao hiện đang mở miễn phí cho tất cả trong giai đoạn dùng thử.'},
   {q:'Chương trình dựa trên khung nào?', a:'Nội dung bám theo khung năng lực tài chính OECD/INFE cho trẻ em: Tiền & Giao dịch, Tiết kiệm & Kế hoạch, Rủi ro & Đầu tư, Thế giới tài chính.'},
   {q:'Trẻ có học được tiếng Anh không?', a:'Có. Mỗi tập dạy 6 từ vựng tiếng Anh về tiền bạc kèm phiên âm IPA, lồng tự nhiên vào câu chuyện của 2 ba con.'}
 ];
@@ -516,7 +516,7 @@ function renderSeasonTabs(){
   [1,2].forEach(function(n){
     var b = document.createElement('button');
     b.className = 'tab-btn' + (state.season===n ? ' active' : '');
-    b.textContent = n===1 ? 'Mùa 1 · Miễn phí' : 'Mùa 2 · Premium 🔒';
+    b.textContent = n===1 ? 'Mùa 1 · Miễn phí' : 'Mùa 2 · Dùng thử miễn phí ✨';
     b.addEventListener('click', function(){
       state.season = n;
       state.openPillar = n===1 ? 1 : 5;
@@ -534,10 +534,8 @@ function renderBanner(){
   var div = document.createElement('div');
   div.className = 'premium-banner';
   div.innerHTML =
-    '<div><div class="t1">🔒 Mùa 2 · Dành cho thành viên Premium</div>' +
-    '<div class="t2">24 tập gốc luôn miễn phí mãi mãi. Mùa 2 đưa Suri lớn hơn một chút: kinh doanh nhí, cổ phần, lãi kép, thẻ tín dụng và trở thành công dân tài chính toàn cầu.</div></div>' +
-    '<button class="btn btn-gold-sm" type="button">🔓 Mở khóa Mùa 2</button>';
-  div.querySelector('button').addEventListener('click', openModal);
+    '<div><div class="t1">✨ Mùa 2 · Đang mở miễn phí cho tất cả (giai đoạn dùng thử)</div>' +
+    '<div class="t2">24 tập gốc luôn miễn phí mãi mãi. Mùa 2 đưa Suri lớn hơn một chút: kinh doanh nhí, cổ phần, lãi kép, thẻ tín dụng và trở thành công dân tài chính toàn cầu — đang mở miễn phí cho mọi người dùng thử.</div></div>';
   bannerEl.appendChild(div);
 }
 
@@ -567,16 +565,13 @@ function renderPillars(){
     var body = document.createElement('div');
     body.className = 'pillar-body';
     p.lessons.forEach(function(l){
-      var locked = state.season === 2;
-      var el = document.createElement(locked ? 'button' : 'a');
-      el.className = 'lesson-card' + (locked ? ' locked' : '');
-      if(!locked){ el.href = l.href; }
-      else { el.type = 'button'; }
+      var el = document.createElement('a');
+      el.className = 'lesson-card';
+      el.href = l.href;
       el.innerHTML =
-        '<div class="top"><span class="num">Tập ' + l.num + '</span>' + (locked ? '<span aria-hidden="true">🔒</span>' : '') + '</div>' +
+        '<div class="top"><span class="num">Tập ' + l.num + '</span></div>' +
         '<div class="name">' + l.title + '</div>' +
-        '<div class="words">' + (locked ? 'Mở khóa để xem từ vựng' : (l.vocab||'')) + '</div>';
-      if(locked){ el.addEventListener('click', openModal); }
+        '<div class="words">' + (l.vocab||'') + '</div>';
       body.appendChild(el);
     });
     wrap.appendChild(body);

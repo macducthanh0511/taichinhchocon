@@ -1,0 +1,18 @@
+{
+  "name": "Heo Vàng — Dạy con về tiền",
+  "short_name": "Heo Vàng",
+  "description": "60 tập video song ngữ Việt–Anh dạy trẻ 6–12 tuổi về tiền: kiếm, tiêu, tiết kiệm, đầu tư, kinh doanh.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#EAF6F0",
+  "theme_color": "#F2A900",
+  "lang": "vi",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

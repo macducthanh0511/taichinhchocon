@@ -50,6 +50,25 @@ h2.groupname{font-size:1.1rem;font-weight:800;margin:32px 0 12px;padding-left:14
 .ask-cta h2{color:#fff;font-size:1.3rem;margin:0 0 8px}
 .ask-cta p{color:rgba(234,246,240,.75);margin-bottom:18px;font-size:.92rem}
 .ask-cta a{color:var(--gold);font-weight:700;text-decoration:none}
+
+/* AI chat widget */
+.ai-chat{background:var(--cream);border-radius:var(--radius-lg);box-shadow:var(--sh-xl);padding:26px 28px;margin:22px 0 40px}
+.ai-chat-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ai-chat-head .ico{font-size:1.6rem}
+.ai-chat-head h2{font-size:1.15rem;margin:0}
+.ai-chat-badge{display:inline-block;font-family:var(--fd);font-weight:800;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;background:var(--gold);color:var(--gold-text);padding:2px 10px;border-radius:var(--radius-pill);margin-left:4px;vertical-align:middle}
+.ai-chat-sub{color:rgba(46,58,42,.65);font-size:.9rem;margin-bottom:16px}
+.ai-thread{display:flex;flex-direction:column;gap:12px;margin-bottom:14px;max-height:360px;overflow-y:auto}
+.ai-thread:empty{display:none}
+.ai-msg{padding:12px 16px;border-radius:16px;font-size:.92rem;line-height:1.55;max-width:88%}
+.ai-msg.user{align-self:flex-end;background:var(--gold);color:var(--gold-text);font-weight:600}
+.ai-msg.bot{align-self:flex-start;background:var(--mint);color:var(--ink)}
+.ai-msg.bot.loading{color:rgba(46,58,42,.5);font-style:italic}
+.ai-form{display:flex;gap:10px}
+.ai-form input{flex:1;padding:13px 18px;border-radius:var(--radius-pill);border:none;font-family:var(--fb);font-size:.95rem;background:var(--mint);color:var(--ink);box-shadow:var(--sh-inset-icon)}
+.ai-form input:focus{outline:none;box-shadow:var(--sh-inset-icon),0 0 0 3px rgba(242,169,0,.3)}
+.ai-form button{flex-shrink:0}
+.ai-note{font-size:.76rem;color:rgba(46,58,42,.5);margin-top:10px}
 </style>
 </head>
 <body>
@@ -65,6 +84,20 @@ h2.groupname{font-size:1.1rem;font-weight:800;margin:32px 0 12px;padding-left:14
 <span class="eyebrow gold" style="margin-top:14px">🐷💬 Hỏi chú Heo</span>
 <h1 class="h1-page">Tình huống tiền bạc thường gặp với con</h1>
 <p class="lead">Những câu hỏi và tình huống thật mà ba mẹ hay gặp — và những câu con hay thắc mắc. Chú Heo gợi ý cách trả lời, kèm bài học liên quan để cả nhà xem thêm cùng nhau. Gõ để tìm nhanh, hoặc lọc theo đối tượng.</p>
+
+<div class="ai-chat">
+  <div class="ai-chat-head">
+    <span class="ico">🐷🤖</span>
+    <h2>Hỏi Chú Heo AI<span class="ai-chat-badge">Beta</span></h2>
+  </div>
+  <p class="ai-chat-sub">Câu hỏi của bạn chưa có trong 26 tình huống bên dưới? Hỏi thẳng Chú Heo AI — trả lời ngay, mọi lúc.</p>
+  <div class="ai-thread" id="aiThread"></div>
+  <form class="ai-form" id="aiForm">
+    <input type="text" id="aiInput" placeholder="Ví dụ: Con 7 tuổi đòi mua điện thoại riêng, có nên không?" maxlength="500" autocomplete="off">
+    <button class="btn btn-gold-sm" type="submit" id="aiSubmit">Gửi</button>
+  </form>
+  <p class="ai-note">Câu trả lời do AI tạo ra, chỉ mang tính tham khảo — không thay thế lời khuyên chuyên môn. Không nhập thông tin cá nhân/tài chính nhạy cảm.</p>
+</div>
 
 <div class="searchbar"><input type="text" id="q" placeholder="Gõ để tìm, ví dụ: heo đất, lừa đảo, tiêu vặt..." /></div>
 <div class="tabs-row" id="tabs"></div>
@@ -164,6 +197,68 @@ function render(){
 }
 q.addEventListener('input',render);
 render();
+
+/* ---- AI chat widget ---- */
+(function(){
+  var thread = document.getElementById('aiThread');
+  var form = document.getElementById('aiForm');
+  var input = document.getElementById('aiInput');
+  var submitBtn = document.getElementById('aiSubmit');
+  var history = [];
+
+  var DAILY_LIMIT = 15;
+  function todayKey(){ return 'heovang_ai_' + new Date().toISOString().slice(0,10); }
+  function usedToday(){ return parseInt(localStorage.getItem(todayKey()) || '0', 10); }
+  function bumpUsed(){ localStorage.setItem(todayKey(), String(usedToday() + 1)); }
+
+  function addMsg(role, text, opts){
+    var el = document.createElement('div');
+    el.className = 'ai-msg ' + (role === 'user' ? 'user' : 'bot') + (opts && opts.loading ? ' loading' : '');
+    el.textContent = text;
+    thread.appendChild(el);
+    thread.scrollTop = thread.scrollHeight;
+    return el;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var question = input.value.trim();
+    if (!question) return;
+
+    if (usedToday() >= DAILY_LIMIT) {
+      addMsg('bot', 'Hôm nay bạn đã hỏi khá nhiều rồi — Chú Heo cần nghỉ ngơi chút, quay lại vào ngày mai nhé! 🐷😴');
+      return;
+    }
+
+    addMsg('user', question);
+    input.value = '';
+    submitBtn.disabled = true;
+    var loadingEl = addMsg('bot', 'Chú Heo đang suy nghĩ...', { loading: true });
+
+    fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ question: question, history: history })
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        loadingEl.remove();
+        var answer = data.answer || 'Xin lỗi, Chú Heo chưa trả lời được. Thử lại nhé!';
+        addMsg('bot', answer);
+        history.push({ role: 'user', content: question });
+        history.push({ role: 'assistant', content: answer });
+        if (!data.notConfigured) bumpUsed();
+      })
+      .catch(function(){
+        loadingEl.remove();
+        addMsg('bot', 'Có lỗi kết nối, ba mẹ thử lại sau ít phút nhé! 🐷');
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        input.focus();
+      });
+  });
+})();
 </script>
 </body>
 </html>

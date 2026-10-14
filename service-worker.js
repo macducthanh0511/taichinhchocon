@@ -19,6 +19,8 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('fetch', function (event) {
   if (event.request.method !== 'GET') return;
+  // Story audio is fetched with Range requests (206), which the Cache API can't store
+  if (event.request.headers.has('range') || /\.mp3$/.test(new URL(event.request.url).pathname)) return;
 
   // HTML pages: network-first, so content updates are seen immediately when online
   if (event.request.mode === 'navigate' || (event.request.headers.get('accept') || '').includes('text/html')) {

@@ -56,7 +56,7 @@
 .spk:hover{transform:scale(1.1)}
 </style>
 </head>
-<body>
+<body data-audio="audio/tap-75.mp3" data-audio-times="0.0,3.07,17.09,19.94,27.62,34.44">
 <header>
   <div class="nav">
     <a class="logo" href="index.html"><span class="badge"><img src="icon-192.png" alt="Heo Vàng" width="32" height="32"></span><span class="name">Heo Vàng</span></a>
@@ -124,12 +124,15 @@
 <script>
 (function(){
 var S=window.speechSynthesis;
+var AUDIO_SRC=document.body.getAttribute('data-audio')||'';
+var AUDIO_TIMES=(document.body.getAttribute('data-audio-times')||'').split(',').filter(Boolean).map(Number);
 var viVoice=null,enVoice=null;
+function norm(l){return (l||'').toLowerCase().replace('_','-');}
 function pickVoices(){
   if(!S)return;
   var vs=S.getVoices();
-  viVoice=vs.find(function(v){return (v.lang||'').toLowerCase().indexOf('vi')===0;})||vs.find(function(v){return /viet/i.test(v.name);})||null;
-  enVoice=vs.find(function(v){return (v.lang||'').toLowerCase().indexOf('en')===0;})||null;
+  viVoice=vs.find(function(v){return norm(v.lang).indexOf('vi')===0;})||vs.find(function(v){return /viet/i.test(v.name);})||null;
+  enVoice=vs.find(function(v){return norm(v.lang).indexOf('en')===0;})||null;
 }
 if(S){pickVoices();S.addEventListener('voiceschanged',pickVoices);setTimeout(pickVoices,500);setTimeout(pickVoices,1500);}
 function speakVi(text,rate,cb){
@@ -146,27 +149,59 @@ function showNoViNote(){
   if(note){note.style.display='block';note.textContent='📱 Thiết bị này chưa cài giọng đọc tiếng Việt — mở bằng điện thoại (Chrome/Safari) để nghe con nhé, hoặc ba mẹ đọc cùng con!';}
 }
 var reading=false,btn=document.getElementById('btnRead');
-var spans=null;
+var spans=null,cur=-1,audioEl=null,audioFailed=!AUDIO_SRC;
 function splitSentences(el){var t=el.textContent;el.innerHTML='';var parts=t.match(/[^.!?…]+[.!?…]*/g)||[t];parts.forEach(function(s){var sp=document.createElement('span');sp.textContent=s;el.appendChild(sp);});return Array.from(el.children);}
+function getSpans(){if(!spans){spans=[];document.querySelectorAll('.story-box p').forEach(function(p){spans=spans.concat(splitSentences(p));});}return spans;}
+function highlight(i){
+  spans.forEach(function(s){s.classList.remove('reading')});
+  var sp=spans[i];if(!sp)return;
+  sp.classList.add('reading');
+  sp.scrollIntoView({block:'center',behavior:'smooth'});
+}
 function stopRead(){
   if(S)S.cancel();
-  reading=false;btn.textContent='🔊 Nghe đọc bài';
+  if(audioEl)audioEl.pause();
+  reading=false;cur=-1;btn.textContent='🔊 Nghe đọc bài';
   document.querySelectorAll('.story-box span').forEach(function(s){s.classList.remove('reading')});
 }
 function readTTS(){
-  if(!spans){spans=[];document.querySelectorAll('.story-box p').forEach(function(p){spans=spans.concat(splitSentences(p));});}
+  getSpans();
   reading=true;btn.textContent='⏹ Dừng đọc';var i=0;
   (function next(){
     if(!reading||i>=spans.length){stopRead();return;}
-    spans.forEach(function(s){s.classList.remove('reading')});
-    var sp=spans[i];sp.classList.add('reading');
-    sp.scrollIntoView({block:'center',behavior:'smooth'});
-    speakVi(sp.textContent,0.98,function(){i++;next();});
+    highlight(i);
+    speakVi(spans[i].textContent,0.98,function(){i++;next();});
   })();
+}
+function readFallback(){
+  if(viVoice){readTTS();}else{pickVoices();viVoice?readTTS():showNoViNote();}
+}
+function audioBroken(){
+  var wasReading=reading;audioFailed=true;stopRead();
+  if(wasReading)readFallback();
+}
+function readAudio(){
+  getSpans();
+  var sync=AUDIO_TIMES.length===spans.length;
+  if(!audioEl){
+    audioEl=new Audio(AUDIO_SRC);
+    audioEl.addEventListener('timeupdate',function(){
+      if(!reading||!sync)return;
+      var t=audioEl.currentTime,i=0;
+      while(i+1<AUDIO_TIMES.length&&AUDIO_TIMES[i+1]<=t)i++;
+      if(i!==cur){cur=i;highlight(i);}
+    });
+    audioEl.addEventListener('ended',stopRead);
+    audioEl.addEventListener('error',audioBroken);
+  }
+  reading=true;btn.textContent='⏹ Dừng đọc';
+  audioEl.currentTime=0;
+  var p=audioEl.play();
+  if(p&&p.catch)p.catch(function(e){if(e&&e.name!=='AbortError')audioBroken();});
 }
 if(btn)btn.addEventListener('click',function(){
   if(reading){stopRead();return;}
-  if(viVoice){readTTS();}else{pickVoices();viVoice?readTTS():showNoViNote();}
+  if(!audioFailed){readAudio();}else{readFallback();}
 });
 document.querySelectorAll('.spk').forEach(function(b){
   b.addEventListener('click',function(){
@@ -175,7 +210,11 @@ document.querySelectorAll('.spk').forEach(function(b){
     speakEn(b.getAttribute('data-en'));
   });
 });
-if(!S){document.querySelectorAll('.needs-tts').forEach(function(e){e.style.display='none'});var n=document.getElementById('nott');if(n){n.style.display='block';}}
+if(!S){
+  // No browser voices at all: the recorded story audio still works, so keep its button.
+  document.querySelectorAll('.needs-tts').forEach(function(e){if(!(AUDIO_SRC&&e.classList.contains('listen-bar')))e.style.display='none'});
+  var n=document.getElementById('nott');if(n&&!AUDIO_SRC){n.style.display='block';}
+}
 var QUIZ=JSON.parse(document.getElementById('quizdata').textContent);var coins=0,done=0;
 var box=document.getElementById('quizbox');
 QUIZ.forEach(function(q,qi){
